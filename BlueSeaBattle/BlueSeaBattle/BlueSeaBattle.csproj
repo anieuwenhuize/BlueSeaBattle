@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Albatros.cs" />
+    <Compile Include="BackgroundLayer.cs" />
     <Compile Include="BattleShip.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="EmptySlot.cs" />
@@ -57,7 +58,9 @@
     </Compile>
     <Compile Include="GameEngine.cs" />
     <Compile Include="IFitInSocket.cs" />
+    <Compile Include="ILayer.cs" />
     <Compile Include="IUpdateable.cs" />
+    <Compile Include="Layer.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Missile.cs" />
     <Compile Include="Program.cs" />

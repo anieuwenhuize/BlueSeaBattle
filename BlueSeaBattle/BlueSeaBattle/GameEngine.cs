@@ -9,13 +9,10 @@ namespace BlueSeaBattle
 {
     class GameEngine
     {
-        private IUpdateable Form;
         private Sea TheSea;
 
-        public GameEngine(IUpdateable form)
+        public GameEngine()
         {
-            Form = form;
-
             TheSea = new Sea();
         }
 

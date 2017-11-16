@@ -10,19 +10,34 @@ using System.Windows.Forms;
 
 namespace BlueSeaBattle
 {
-    public partial class Form1 : Form, IUpdateable
+    public partial class Form1 : Form
     {
         private const int PixelWidth = 25;
         private const int GridWidth = 24;
         private const int GridHeight = 12;
+
+        private GameEngine Game;
+
+        private IDictionary<int, Color> LayerValueToColorMapping;
         
         public Form1()
         {
+            LayerValueToColorMapping = new Dictionary<int, Color>()
+            {
+                // background
+                { 1, Color.Beige },
+                { 2, Color.Orange }
+            };
+
             InitializeComponent();
 
             CreateGrid();
 
-            //PaintItBlack();
+            Game = new GameEngine();
+
+            Game.Start();
+
+            RepaintGrid();
         }
 
         private PictureBox CreatePixel(int x, int y, string naam)
@@ -56,24 +71,13 @@ namespace BlueSeaBattle
                     int y = j * PixelWidth;
 
                     PictureBox pixel = this.CreatePixel(x, y, naam);
-
-                    if((i+j) % 2 == 0)
-                    {
-                        pixel.BackColor = Color.Beige;
-
-                    } else
-                    {
-                        pixel.BackColor = Color.Orange;
-                    }
                     
-
                     this.Gridpanel.Controls.Add(pixel);
-
                 }
             }
         }
 
-        public void PaintItBlack()
+        public void RepaintGrid()
         {
             for (int i = 0; i <= GridWidth; i++)
             {
@@ -85,7 +89,11 @@ namespace BlueSeaBattle
                     Control control = this.Gridpanel.Controls.Find(naam, searchAllChildren)[0];
 
                     PictureBox pixel = (PictureBox)control;
-                    pixel.BackColor = Color.Black;
+
+                    ViewModel vm = this.Game.GetViewModel();
+
+                    int displayValue = vm.GetDisplayValue(i, j);
+                    pixel.BackColor = this.LayerValueToColorMapping[displayValue];
                 }
             }
             
