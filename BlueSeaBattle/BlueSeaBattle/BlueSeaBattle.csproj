@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="GameEngine.cs" />
     <Compile Include="IFitInSocket.cs" />
+    <Compile Include="IKanon.cs" />
     <Compile Include="ILayer.cs" />
     <Compile Include="IUpdateable.cs" />
     <Compile Include="Layer.cs" />

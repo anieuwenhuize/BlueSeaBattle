@@ -12,16 +12,46 @@ namespace BlueSeaBattle
         private Sea TheSea;
         private ViewModel ViewModel;
 
-        public GameEngine()
+        private IUpdateable Form;
+
+        public GameEngine(IUpdateable form)
         {
             TheSea = new Sea();
             ViewModel = new ViewModel(this.TheSea);
+
+            Form = form;
         }
 
         public void Start()
         {
-            RunTestScenario();
+            PlaceShips();
             ViewModel.Recalculate();
+
+            Form.DoUpdate();
+
+            StartGameLoop();
+        }
+
+        private void StartGameLoop()
+        {
+            while (true)
+            {
+                Shoot(0, 1);
+                Shoot(1, 1);
+                Shoot(2, 1);
+                Shoot(3, 1);
+                Shoot(4, 1);
+
+                ViewModel.Recalculate();
+                
+            }
+        }
+
+        private void Shoot(int x, int y)
+        {
+            var missile = new Missile(new Coordinate(x, y), null);
+
+            this.TheSea.AcceptMissile(missile);
         }
 
         public ViewModel GetViewModel()
@@ -59,7 +89,7 @@ namespace BlueSeaBattle
             TheSea.AcceptShip(scraper);
         }
 
-        public void RunTestScenario()
+        public void PlaceShips()
         {
             AddSunkShip();
 

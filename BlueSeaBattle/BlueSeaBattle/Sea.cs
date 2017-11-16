@@ -24,6 +24,14 @@ namespace BlueSeaBattle
             AllShips = new List<BattleShip>();
         }
 
+        public void AcceptMissile(Missile missile)
+        {
+            foreach(BattleShip ship in GetAllSurvivingShips())
+            {
+                ship.AcceptMissile(missile);
+            }
+        }
+
         public void AcceptShip(BattleShip ship)
         {
             // check first

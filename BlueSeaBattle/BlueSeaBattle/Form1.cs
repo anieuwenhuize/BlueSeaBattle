@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace BlueSeaBattle
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IUpdateable
     {
         private const int PixelWidth = 25;
         private const int GridWidth = 24;
@@ -39,11 +39,7 @@ namespace BlueSeaBattle
 
             CreateGrid();
 
-            Game = new GameEngine();
-
-            Game.Start();
-
-            RepaintGrid();
+            Game = new GameEngine(this);
         }
 
         private PictureBox CreatePixel(int x, int y, string naam)
@@ -104,9 +100,16 @@ namespace BlueSeaBattle
             }
         }
 
-        public void doUpdate()
+        public void DoUpdate()
         {
-            // redraw form
+            RepaintGrid();
+
+            this.Refresh();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Game.Start();
         }
     }
 }
