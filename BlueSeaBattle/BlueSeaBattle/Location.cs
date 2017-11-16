@@ -6,12 +6,30 @@ using System.Threading.Tasks;
 
 namespace BlueSeaBattle
 {
-    class Location
+    public class Location
     {
         private IEnumerable<Coordinate> Coordinates;
 
         public Location(IEnumerable<Coordinate> coordinates)
         {
+            this.Coordinates = coordinates;
+        }
+
+        public Location(
+            Coordinate coordinate1,
+            Coordinate coordinate2,
+            Coordinate coordinate3,
+            Coordinate coordinate4,
+            Coordinate coordinate5)
+        {
+            IEnumerable<Coordinate> coordinates = new List<Coordinate>() {
+                coordinate1,
+                coordinate2,
+                coordinate3,
+                coordinate4,
+                coordinate5
+            };
+
             this.Coordinates = coordinates;
         }
 

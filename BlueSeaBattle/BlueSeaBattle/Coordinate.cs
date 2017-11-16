@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlueSeaBattle
 {
-    class Coordinate : Tuple<int, int>
+    public class Coordinate : Tuple<int, int>
     {
         public Coordinate(int item1, int item2) 
             : base(item1, item2)

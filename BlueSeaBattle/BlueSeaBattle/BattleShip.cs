@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlueSeaBattle
 {
-    abstract class BattleShip
+    public abstract class BattleShip
     {
         private IFitInSocket Slot1;
         private IFitInSocket Slot2;
@@ -27,7 +27,7 @@ namespace BlueSeaBattle
             this.Slot5 = new EmptySlot();
         }
 
-        private bool IsSunk()
+        public bool IsSunk()
         {
             return this.Slot1 == null
                 && this.Slot2 == null

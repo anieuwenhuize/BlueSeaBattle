@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlueSeaBattle
 {
-    class Missile
+    public class Missile
     {
         private Coordinate Target;
         private BattleShip Owner;

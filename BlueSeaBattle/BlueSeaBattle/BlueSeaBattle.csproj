@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Albatros.cs" />
     <Compile Include="BattleShip.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="EmptySlot.cs" />
