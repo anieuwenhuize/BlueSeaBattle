@@ -13,7 +13,7 @@ namespace BlueSeaBattle
     public partial class Form1 : Form, IUpdateable
     {
         private const int PixelWidth = 25;
-        private const int GridWidth = 12;
+        private const int GridWidth = 24;
         private const int GridHeight = 12;
         
         public Form1()
@@ -22,7 +22,7 @@ namespace BlueSeaBattle
 
             CreateGrid();
 
-            PaintItBlack();
+            //PaintItBlack();
         }
 
         private PictureBox CreatePixel(int x, int y, string naam)
