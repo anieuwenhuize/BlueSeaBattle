@@ -21,5 +21,22 @@ namespace BlueSeaBattle
 
             return hasCoordinate;
         }
+
+        public int GetIndex(Coordinate coordinate)
+        {
+            int index = 1;
+
+            foreach(Coordinate current in this.Coordinates)
+            {
+                if(current.Equals(coordinate))
+                {
+                    return index;
+                }
+
+                index++;
+            }
+
+            throw new InvalidOperationException($"Coordinate: {coordinate} niet bekend in locatie");
+        }
     }
 }

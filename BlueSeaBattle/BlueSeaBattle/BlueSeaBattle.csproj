@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="BattleShip.cs" />
     <Compile Include="Coordinate.cs" />
+    <Compile Include="EmptySlot.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +58,7 @@
     <Compile Include="IFitInSocket.cs" />
     <Compile Include="IUpdateable.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="Missile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

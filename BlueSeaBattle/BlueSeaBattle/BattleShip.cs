@@ -18,6 +18,35 @@ namespace BlueSeaBattle
 
         private IFitInSocket Slot5;
 
-        private 
+        private Location Location;
+
+        public BattleShip(Location location)
+        {
+            this.Location = location;
+
+            this.Slot1 = new EmptySlot();
+            this.Slot2 = new EmptySlot();
+            this.Slot3 = new EmptySlot();
+            this.Slot4 = new EmptySlot();
+            this.Slot5 = new EmptySlot();
+        }
+
+        private bool IsHit(Missile missile)
+        {
+            return this.Location.Contains(missile.GetTarget());
+        }
+
+        private void AcceptDamageOn(Coordinate coordinate)
+        {
+
+        }
+
+        public void AcceptMissile(Missile missile)
+        {
+            if (this.IsHit(missile))
+            {
+                AcceptDamageOn(missile.GetTarget());
+            }
+        }
     }
 }
