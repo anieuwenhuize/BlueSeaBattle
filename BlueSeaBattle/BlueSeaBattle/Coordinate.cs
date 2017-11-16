@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlueSeaBattle
 {
-    public class Coordinate : Tuple<int, int>
+    public class Coordinate : Tuple<int, int>, ICoordinate
     {
-
         public Coordinate(int item1, int item2) 
             : base(item1, item2)
         {

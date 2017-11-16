@@ -27,14 +27,14 @@ namespace BlueSeaBattle
             PlaceShips();
             ViewModel.Recalculate();
 
-            Form.DoUpdate();
+            UpdateUI();
 
             StartGameLoop();
         }
 
         private void StartGameLoop()
         {
-            while (true)
+            //while (true)
             {
                 Shoot(0, 1);
                 Shoot(1, 1);
@@ -42,9 +42,14 @@ namespace BlueSeaBattle
                 Shoot(3, 1);
                 Shoot(4, 1);
 
-                ViewModel.Recalculate();
-                
+                UpdateUI();
             }
+        }
+
+        private void UpdateUI()
+        {
+            ViewModel.Recalculate();
+            Form.DoUpdate();
         }
 
         private void Shoot(int x, int y)

@@ -107,6 +107,11 @@ namespace BlueSeaBattle
             this.Refresh();
         }
 
+        private void updateStatus()
+        {
+           // this.labelTotalShips.Text
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Game.Start();
