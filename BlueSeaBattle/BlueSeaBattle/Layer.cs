@@ -2,7 +2,7 @@
 
 namespace BlueSeaBattle
 {
-    public class Layer: Dictionary<string, int>, ILayer
+    public class Layer: Dictionary<string, int>
     {
         public void AddDisplayValue(int x, int y, int displayValue)
         {

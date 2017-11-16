@@ -8,11 +8,11 @@ namespace BlueSeaBattle
 {
     public abstract class BattleShip
     {
-        private IFitInSocket Slot1;
-        private IFitInSocket Slot2;
-        private IFitInSocket Slot3;
-        private IFitInSocket Slot4;
-        private IFitInSocket Slot5;
+        protected IFitInSocket Slot1;
+        protected IFitInSocket Slot2;
+        protected IFitInSocket Slot3;
+        protected IFitInSocket Slot4;
+        protected IFitInSocket Slot5;
 
         private Location Location;
 
@@ -39,6 +39,11 @@ namespace BlueSeaBattle
         private bool IsHit(Missile missile)
         {
             return this.Location.Contains(missile.GetTarget());
+        }
+
+        public Location GetLocation()
+        {
+            return this.Location;
         }
 
         private void AcceptDamageOn(Coordinate coordinate)

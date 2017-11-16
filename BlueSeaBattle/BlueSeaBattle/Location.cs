@@ -33,6 +33,11 @@ namespace BlueSeaBattle
             this.Coordinates = coordinates;
         }
 
+        public IEnumerable<Coordinate> GetCoordinates()
+        {
+            return Coordinates;
+        }
+
         public bool Contains(Coordinate coordinate)
         {
             bool hasCoordinate = this.Coordinates.Contains<Coordinate>(coordinate);

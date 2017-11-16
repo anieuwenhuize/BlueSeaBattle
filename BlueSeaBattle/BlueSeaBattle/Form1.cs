@@ -26,7 +26,10 @@ namespace BlueSeaBattle
             {
                 // background
                 { 1, Color.Beige },
-                { 2, Color.Orange }
+                { 2, Color.Orange },
+
+                // seabottom
+                { 11, Color.Gray },
             };
 
             InitializeComponent();
@@ -96,7 +99,6 @@ namespace BlueSeaBattle
                     pixel.BackColor = this.LayerValueToColorMapping[displayValue];
                 }
             }
-            
         }
 
         public void doUpdate()

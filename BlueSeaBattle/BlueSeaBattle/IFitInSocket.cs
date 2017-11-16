@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlueSeaBattle
 {
-    interface IFitInSocket
+    public interface IFitInSocket
     {
     }
 }

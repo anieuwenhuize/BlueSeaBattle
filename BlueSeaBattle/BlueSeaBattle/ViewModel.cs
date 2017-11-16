@@ -11,22 +11,32 @@ namespace BlueSeaBattle
         private Sea TheSea;
 
         private ILayer BackgroundLayer;
+        private ILayer SeaBottomLayer;
 
         public ViewModel(Sea Sea)
         {
             TheSea = Sea;
 
             BackgroundLayer = new BackgroundLayer();
-        }
-
-        public void AddDisplayValue(int x, int y, int displayValue)
-        {
-            throw new NotImplementedException();
+            SeaBottomLayer = new SeaBottomLayer(this.TheSea);
         }
 
         public int GetDisplayValue(int x, int y)
         {
-            return this.BackgroundLayer.GetDisplayValue(x, y);
+            int backgroundValue = this.BackgroundLayer.GetDisplayValue(x, y);
+
+            int SeaBottomValue = this.SeaBottomLayer.GetDisplayValue(x, y);
+
+            int valueToReturn = new List<int>() { backgroundValue, SeaBottomValue }
+                .Max();
+
+            return valueToReturn;
+        }
+
+        public void Recalculate()
+        {
+            BackgroundLayer.Recalculate();
+            SeaBottomLayer.Recalculate();
         }
     }
 }

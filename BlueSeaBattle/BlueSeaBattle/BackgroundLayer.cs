@@ -4,19 +4,23 @@ namespace BlueSeaBattle
 {
     public class BackgroundLayer : ILayer
     {
-        public void AddDisplayValue(int x, int y, int displayValue)
-        {
-            throw new NotImplementedException();
-        }
+        public const int NoValue = 0;
+        public const int DefaultValue = 1;
+        public const int WaveValue = 2;
 
         public int GetDisplayValue(int x, int y)
         {
             if ((x + y) % 2 == 0)
             {
-                return 1;
+                return DefaultValue;
             }
 
-            return 2;
+            return WaveValue;
+        }
+
+        public void Recalculate()
+        {
+            // noop 
         }
     }
 }

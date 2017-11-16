@@ -8,6 +8,15 @@ namespace BlueSeaBattle
 {
     public class Sea
     {
+        public static IEnumerable<Coordinate> GetAllCoordinatesFrom(IEnumerable<BattleShip> ships)
+        {
+            IEnumerable<Coordinate> allLocations = ships
+                .SelectMany(x => x.GetLocation()
+                    .GetCoordinates());
+
+            return allLocations;
+        }
+
         private IList<BattleShip> AllShips;
 
         public Sea()
@@ -19,6 +28,22 @@ namespace BlueSeaBattle
         {
             // check first
             AllShips.Add(ship);
+        }
+
+        public IEnumerable<BattleShip> GetAllSunkShips()
+        {
+            IEnumerable<BattleShip> allSunkShips = this.AllShips
+                .Where(x => x.IsSunk());
+
+            return allSunkShips;
+        }
+
+        public IEnumerable<BattleShip> GetAllSurvivingShips()
+        {
+            IEnumerable<BattleShip> allSurvivingShips = this.AllShips
+                .Where(x => ! x.IsSunk());
+
+            return allSurvivingShips;
         }
     }
 }

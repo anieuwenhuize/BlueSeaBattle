@@ -8,6 +8,7 @@ namespace BlueSeaBattle
 {
     public class Coordinate : Tuple<int, int>
     {
+
         public Coordinate(int item1, int item2) 
             : base(item1, item2)
         {
@@ -24,6 +25,16 @@ namespace BlueSeaBattle
             }
 
             return base.Equals(obj);
+        }
+
+        public int GetX()
+        {
+            return Item1;
+        }
+
+        public int GetY()
+        {
+            return Item2;
         }
     }
 }
