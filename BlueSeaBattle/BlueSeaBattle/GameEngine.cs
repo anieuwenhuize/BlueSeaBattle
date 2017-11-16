@@ -24,6 +24,13 @@ namespace BlueSeaBattle
             RunTestScenario();
         }
 
+        public ViewModel GetViewModel()
+        {
+            ViewModel vm = new ViewModel(this.TheSea);
+
+            return vm;
+        }
+
         public void RunTestScenario()
         {
             var c1 = new Coordinate(0, 1);

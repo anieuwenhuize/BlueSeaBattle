@@ -8,6 +8,13 @@ namespace BlueSeaBattle
 {
     public class ViewModel
     {
+        private Sea TheSea;
+
+        public ViewModel(Sea Sea)
+        {
+            TheSea = Sea;
+        }
+
 
     }
 }
