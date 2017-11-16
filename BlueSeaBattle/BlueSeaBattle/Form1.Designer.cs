@@ -37,12 +37,12 @@
             // 
             this.Gridpanel.Location = new System.Drawing.Point(15, 8);
             this.Gridpanel.Name = "Gridpanel";
-            this.Gridpanel.Size = new System.Drawing.Size(456, 429);
+            this.Gridpanel.Size = new System.Drawing.Size(996, 532);
             this.Gridpanel.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(510, 67);
+            this.pictureBox1.Location = new System.Drawing.Point(1041, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
             this.pictureBox1.TabIndex = 1;
@@ -52,7 +52,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 440);
+            this.ClientSize = new System.Drawing.Size(1164, 589);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Gridpanel);
             this.Name = "Form1";

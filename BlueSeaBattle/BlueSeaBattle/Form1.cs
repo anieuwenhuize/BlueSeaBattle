@@ -13,8 +13,8 @@ namespace BlueSeaBattle
     public partial class Form1 : Form
     {
         private const int PixelWidth = 10;
-        private const int GridWidth = 10;
-        private const int GridHeight = 10;
+        private const int GridWidth = 100;
+        private const int GridHeight = 50;
         
         public Form1()
         {
