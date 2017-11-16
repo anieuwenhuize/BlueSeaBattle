@@ -30,6 +30,9 @@ namespace BlueSeaBattle
 
                 // seabottom
                 { 11, Color.Gray },
+
+                // seasurface
+                { 21, Color.Black },
             };
 
             InitializeComponent();
