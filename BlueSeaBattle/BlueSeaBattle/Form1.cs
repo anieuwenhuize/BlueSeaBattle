@@ -10,17 +10,19 @@ using System.Windows.Forms;
 
 namespace BlueSeaBattle
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IUpdateable
     {
-        private const int PixelWidth = 10;
-        private const int GridWidth = 100;
-        private const int GridHeight = 50;
+        private const int PixelWidth = 25;
+        private const int GridWidth = 12;
+        private const int GridHeight = 12;
         
         public Form1()
         {
             InitializeComponent();
 
             CreateGrid();
+
+            PaintItBlack();
         }
 
         private PictureBox CreatePixel(int x, int y, string naam)
@@ -34,6 +36,13 @@ namespace BlueSeaBattle
             return pixel;
         }
 
+        private string GetPixelNaam(int x, int y)
+        {
+            string naam = $"c{x:000}{y:000}";
+
+            return naam;
+        }
+
         private void CreateGrid()
         {
             this.Gridpanel.Size = new Size((GridWidth * PixelWidth), (GridHeight * PixelWidth));
@@ -41,7 +50,7 @@ namespace BlueSeaBattle
             {
                 for (int j = 0; j <= GridHeight; j++)
                 {
-                    string naam = $"c{i}{j}";
+                    string naam = GetPixelNaam(i, j);
 
                     int x = i * PixelWidth;
                     int y = j * PixelWidth;
@@ -62,6 +71,29 @@ namespace BlueSeaBattle
 
                 }
             }
+        }
+
+        public void PaintItBlack()
+        {
+            for (int i = 0; i <= GridWidth; i++)
+            {
+                for (int j = 0; j <= GridHeight; j++)
+                {
+                    string naam = GetPixelNaam(i, j);
+
+                    bool searchAllChildren = false;
+                    Control control = this.Gridpanel.Controls.Find(naam, searchAllChildren)[0];
+
+                    PictureBox pixel = (PictureBox)control;
+                    pixel.BackColor = Color.Black;
+                }
+            }
+            
+        }
+
+        public void doUpdate()
+        {
+            // redraw form
         }
     }
 }
