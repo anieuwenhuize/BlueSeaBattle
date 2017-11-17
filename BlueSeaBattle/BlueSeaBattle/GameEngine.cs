@@ -36,11 +36,6 @@ namespace BlueSeaBattle
         {
             //while (true)
             {
-                Shoot(0, 1);
-                Shoot(1, 1);
-                Shoot(2, 1);
-                Shoot(3, 1);
-                Shoot(4, 1);
 
                 UpdateUI();
             }
@@ -50,13 +45,6 @@ namespace BlueSeaBattle
         {
             ViewModel.Recalculate();
             Form.DoUpdate();
-        }
-
-        private void Shoot(int x, int y)
-        {
-            var missile = new Missile(new Coordinate(x, y), null);
-
-            this.TheSea.AcceptMissile(missile);
         }
 
         public ViewModel GetViewModel()

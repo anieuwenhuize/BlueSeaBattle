@@ -9,6 +9,7 @@ namespace BlueSeaBattle
     public class Turn
     {
         private ICollection<BattleShip> BattleShips;
+        private List<Missile> FiredMissiles;
 
         private Sea TheSea;
 
@@ -17,6 +18,7 @@ namespace BlueSeaBattle
         public Turn(ICollection<BattleShip> BattleShips, Sea sea)
         {
             Randomizer = new Random();
+            FiredMissiles = new List<Missile>();
 
             this.BattleShips = BattleShips;
             this.TheSea = sea;
@@ -78,7 +80,10 @@ namespace BlueSeaBattle
 
             IEnumerable<Missile> missiles = Shoot(weaponscombi, battleship);
 
-            TheSea.AcceptMissiles(missiles);
+            this.FiredMissiles.AddRange(missiles);
+
+            var incommin = new IncommingMissiles(TheSea, missiles);
+            incommin.Launch();
 
             // Move  
         }

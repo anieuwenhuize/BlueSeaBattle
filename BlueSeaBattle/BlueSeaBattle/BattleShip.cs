@@ -59,9 +59,14 @@ namespace BlueSeaBattle
                 && this.Slot5 == null;
         }
 
+        public bool HasCoordinate(ICoordinate coordinate)
+        {
+            return this.Location.Contains(coordinate);
+        }
+
         private bool IsHit(Missile missile)
         {
-            return this.Location.Contains(missile.GetTarget());
+            return HasCoordinate(missile.GetTarget());
         }
 
         public Location GetLocation()

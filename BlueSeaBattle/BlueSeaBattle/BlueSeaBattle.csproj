@@ -69,6 +69,7 @@
     <Compile Include="IKanon.cs" />
     <Compile Include="IKapitein.cs" />
     <Compile Include="ILayer.cs" />
+    <Compile Include="IncommingMissiles.cs" />
     <Compile Include="IRadar.cs" />
     <Compile Include="IUpdateable.cs" />
     <Compile Include="Layer.cs" />
