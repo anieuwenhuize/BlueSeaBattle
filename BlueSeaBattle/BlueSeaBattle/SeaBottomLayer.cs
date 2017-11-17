@@ -20,9 +20,9 @@ namespace BlueSeaBattle
 
             IEnumerable<BattleShip> sunkShips = this.TheSea.GetAllSunkShips();
 
-            IEnumerable<Coordinate> coordinates = Sea.GetAllCoordinatesFrom(sunkShips);
+            IEnumerable<ICoordinate> coordinates = Sea.GetAllCoordinatesFrom(sunkShips);
 
-            foreach (Coordinate coordinate in coordinates)
+            foreach (ICoordinate coordinate in coordinates)
             {
                 this.AddDisplayValue(coordinate.GetX(), coordinate.GetY(), SunkShipValue);
             }

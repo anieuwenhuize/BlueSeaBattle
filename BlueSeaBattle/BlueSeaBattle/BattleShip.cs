@@ -45,7 +45,7 @@ namespace BlueSeaBattle
             return slotitems;
         }
 
-        protected IEnumerable<Coordinate> GetCoordinates()
+        protected IEnumerable<ICoordinate> GetCoordinates()
         {
             return this.Location.GetCoordinates();
         }
@@ -69,7 +69,7 @@ namespace BlueSeaBattle
             return this.Location;
         }
 
-        private void AcceptDamageOn(Coordinate coordinate)
+        private void AcceptDamageOn(ICoordinate coordinate)
         {
             int damagedSlotNumber = this.Location.GetIndex(coordinate);
 

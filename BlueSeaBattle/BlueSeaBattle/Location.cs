@@ -8,9 +8,9 @@ namespace BlueSeaBattle
 {
     public class Location
     {
-        private IEnumerable<Coordinate> Coordinates;
+        private IEnumerable<ICoordinate> Coordinates;
 
-        public Location(IEnumerable<Coordinate> coordinates)
+        public Location(IEnumerable<ICoordinate> coordinates)
         {
             this.Coordinates = coordinates;
         }
@@ -22,7 +22,7 @@ namespace BlueSeaBattle
             Coordinate coordinate4,
             Coordinate coordinate5)
         {
-            IEnumerable<Coordinate> coordinates = new List<Coordinate>() {
+            IEnumerable<ICoordinate> coordinates = new List<ICoordinate>() {
                 coordinate1,
                 coordinate2,
                 coordinate3,
@@ -33,23 +33,23 @@ namespace BlueSeaBattle
             this.Coordinates = coordinates;
         }
 
-        public IEnumerable<Coordinate> GetCoordinates()
+        public IEnumerable<ICoordinate> GetCoordinates()
         {
             return Coordinates;
         }
 
-        public bool Contains(Coordinate coordinate)
+        public bool Contains(ICoordinate coordinate)
         {
-            bool hasCoordinate = this.Coordinates.Contains<Coordinate>(coordinate);
+            bool hasCoordinate = this.Coordinates.Contains<ICoordinate>(coordinate);
 
             return hasCoordinate;
         }
 
-        public int GetIndex(Coordinate coordinate)
+        public int GetIndex(ICoordinate coordinate)
         {
             int index = 1;
 
-            foreach(Coordinate current in this.Coordinates)
+            foreach(ICoordinate current in this.Coordinates)
             {
                 if(current.Equals(coordinate))
                 {

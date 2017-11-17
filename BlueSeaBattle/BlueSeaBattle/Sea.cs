@@ -11,9 +11,9 @@ namespace BlueSeaBattle
         public const int GridWidth = 24;
         public const int GridHeight = 12;
 
-        public static IEnumerable<Coordinate> GetAllCoordinatesFrom(IEnumerable<BattleShip> ships)
+        public static IEnumerable<ICoordinate> GetAllCoordinatesFrom(IEnumerable<BattleShip> ships)
         {
-            IEnumerable<Coordinate> allLocations = ships
+            IEnumerable<ICoordinate> allLocations = ships
                 .SelectMany(x => x.GetLocation()
                     .GetCoordinates());
 
