@@ -29,82 +29,72 @@ namespace BlueSeaBattle
 
         public void MoveShip(IKapitein captain)
         {
+            Location from = Ship.GetLocation();
+
+            Location to = GetNewLocation(from, captain);
+
+            Ship.SetLocation(to);
+        }
+
+        private Location GetNewLocation(Location from, IKapitein captain)
+        {
             var direction = captain.GetDirection();
+            ICollection<ICoordinate> to = new List<ICoordinate>();
 
-            switch (captain.GetDirection())
+            foreach(ICoordinate current in from.GetCoordinates())
             {
-                case Direction.Noord:
-                    Ship.SetLocation(MoveNorth(Ship.GetLocation()));
-                    break;
+                switch (direction)
+                {
+                    case Direction.Noord:
+                        to.Add(MoveNorth(current));
+                        break;
 
-                case Direction.Oost:
-                    Ship.SetLocation(MoveEast(Ship.GetLocation()));
-                    break;
-                case Direction.Zuid:
-                    Ship.SetLocation(MoveSouth(Ship.GetLocation()));
-                    break;
-                case Direction.West:
-                    Ship.SetLocation(MoveWest(Ship.GetLocation()));
-                    break;
+                    case Direction.Oost:
+                        to.Add(MoveEast(current));
+                        break;
 
-                default:
-                    throw new InvalidOperationException($"Onbekende richting gegeven: {direction}");
+                    case Direction.Zuid:
+                        to.Add(MoveSouth(current));
+                        break;
 
+                    case Direction.West:
+                        to.Add(MoveWest(current));
+                        break;
+
+                    default:
+                        throw new InvalidOperationException($"Onbekende richting gegeven: {direction}");
+                }
             }
+
+            return new Location(to);
         }
 
-        private Location MoveNorth(Location currentlocation)
+        private ICoordinate MoveNorth(ICoordinate from)
         {
-            ICollection<ICoordinate> destination = new List<ICoordinate>();
+            var to = new Coordinate(from.GetX(), from.GetY() + 1);
 
-            foreach(ICoordinate currentCoordinate in currentlocation.GetCoordinates())
-            {
-                var destinationCoordinate =
-                    new Coordinate(currentCoordinate.GetX(), currentCoordinate.GetY() + 1);
-            }
-
-            return new Location(destination);
+            return to;
         }
 
-        private Location MoveEast(Location currentlocation)
+        private ICoordinate MoveEast(ICoordinate from)
         {
-            var destination = new List<ICoordinate>();
+            var to = new Coordinate(from.GetX() + 1, from.GetY());
 
-            foreach (ICoordinate currentCoordinate in currentlocation.GetCoordinates())
-            {
-                var destinationCoordinate =
-                    new Coordinate(currentCoordinate.GetX() + 1, currentCoordinate.GetY());
-
-                destination.Add(destinationCoordinate);
-            }
-
-            return new Location(destination);
+            return to;
         }
 
-        private Location MoveSouth(Location currentlocation)
+        private ICoordinate MoveSouth(ICoordinate from)
         {
-            ICollection<ICoordinate> destination = new List<ICoordinate>();
+            var to = new Coordinate(from.GetX(), from.GetY() - 1);
 
-            foreach (ICoordinate currentCoordinate in currentlocation.GetCoordinates())
-            {
-                var destinationCoordinate =
-                    new Coordinate(currentCoordinate.GetX(), currentCoordinate.GetY() - 1);
-            }
-
-            return new Location(destination);
+            return to;
         }
 
-        private Location MoveWest(Location currentlocation)
+        private ICoordinate MoveWest(ICoordinate from)
         {
-            ICollection<ICoordinate> destination = new List<ICoordinate>();
+            var to = new Coordinate(from.GetX() - 1, from.GetY());
 
-            foreach (ICoordinate currentCoordinate in currentlocation.GetCoordinates())
-            {
-                var destinationCoordinate =
-                    new Coordinate(currentCoordinate.GetX() - 1, currentCoordinate.GetY());
-            }
-
-            return new Location(destination);
+            return to;
         }
     }
 }
