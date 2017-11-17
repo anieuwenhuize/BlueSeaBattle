@@ -1,38 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BlueSeaBattle
 {
     public class TestCanon : IKanon, IFitInSocket
     {
-        private ICollection<ICoordinate> Targets;
+        private int State;
+        private IList<ICoordinate> Targets;
 
-        public TestCanon()
+        public TestCanon(IList<ICoordinate> targets)
         {
-            Targets = new List<ICoordinate>() {
-                new Coordinate(2, 2),
-                    new Coordinate(2, 3),
-                    new Coordinate(2, 4),
-                    new Coordinate(2, 5),
-                    new Coordinate(2, 6)
-            };
+            State = 0;
+            Targets = targets;
         }
 
         public ICoordinate Fire(ICoordinate coordinate)
         {
-            throw new NotImplementedException();
+            return Fire();
         }
 
         public ICoordinate Fire()
         {
-            var missile = Targets.First();
+            State++;
 
-            Targets.Remove(missile);
+            int index = State % Targets.Count;
 
-            return missile;
+            return Targets[index];
         }
     }
 }

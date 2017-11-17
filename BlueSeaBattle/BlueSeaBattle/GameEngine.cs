@@ -92,58 +92,46 @@ namespace BlueSeaBattle
             return TheSea;
         }
 
-        private void AddSurvivingShip()
+        public void AddAlbatros(Location location)
         {
-            var c1 = new Coordinate(0, 1);
-            var c2 = new Coordinate(1, 1);
-            var c3 = new Coordinate(2, 1);
-            var c4 = new Coordinate(3, 1);
-            var c5 = new Coordinate(4, 1);
+            IFitInSocket captainSlow = new TestCaptain(3);
+            IFitInSocket canon = new TestCanon(new List<ICoordinate>() {
+                new Coordinate(20, 3) });
 
-            var location = new Location(c1, c2, c3, c4, c5);
-
-            BattleShip albatros = new Albatros(location);
+            BattleShip albatros = new TestShip("Albatros", location, captainSlow, canon);
 
             TheSea.AcceptShip(albatros);
         }
 
-        private void AddSurvivingShip2()
+        public void AddSallySinke(Location location)
         {
-            var c1 = new Coordinate(0, 4);
-            var c2 = new Coordinate(1, 4);
-            var c3 = new Coordinate(2, 4);
-            var c4 = new Coordinate(3, 4);
-            var c5 = new Coordinate(4, 4);
+            IFitInSocket captainNormal = new TestCaptain(2);
+            IFitInSocket canon = new TestCanon(new List<ICoordinate>() {
+                new Coordinate(2, 2) });
 
-            var location = new Location(c1, c2, c3, c4, c5);
-
-            BattleShip albatros = new SnelleJelle(location);
+            BattleShip albatros = new TestShip("Sally Sinke", location, captainNormal, canon);
 
             TheSea.AcceptShip(albatros);
         }
 
-        private void AddSunkShip()
+        public void AddDeEendracht(Location location)
         {
-            var c1 = new Coordinate(2, 2);
-            var c2 = new Coordinate(2, 3);
-            var c3 = new Coordinate(2, 4);
-            var c4 = new Coordinate(2, 5);
-            var c5 = new Coordinate(2, 6);
+            IFitInSocket captainQuick = new TestCaptain(1);
+            IFitInSocket canon = new TestCanon(new List<ICoordinate>() {
+                new Coordinate(2, 2) });
 
-            var location = new Location(c1, c2, c3, c4, c5);
+            BattleShip albatros = new TestShip("De Eendracht", location, captainQuick, canon);
 
-            BattleShip scraper = new SunkShip(location);
-
-            TheSea.AcceptShip(scraper);
+            TheSea.AcceptShip(albatros);
         }
 
         public void PlaceShips()
         {
-            AddSunkShip();
+            var plan = new Plan();
 
-            AddSurvivingShip();
-
-            AddSurvivingShip2();
+            AddAlbatros(plan.GetNexLocation());
+            AddSallySinke(plan.GetNexLocation());
+            AddDeEendracht(plan.GetNexLocation());
         }
     }
 }

@@ -27,22 +27,6 @@ namespace BlueSeaBattle
             AllShips = new List<BattleShip>();
         }
 
-        //public void AcceptMissiles(IEnumerable<Missile> missiles)
-        //{
-        //    foreach (Missile missile in missiles)
-        //    {
-        //        AcceptMissile(missile);
-        //    }
-        //}
-
-        //public void AcceptMissile(Missile missile)
-        //{
-        //    foreach(BattleShip ship in GetAllSurvivingShips())
-        //    {
-        //        ship.AcceptMissile(missile);
-        //    }
-        //}
-
         public BattleShip GetShipOn(ICoordinate coordinate)
         {
             foreach(BattleShip ship in GetAllSurvivingShips())
