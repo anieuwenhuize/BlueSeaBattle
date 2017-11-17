@@ -33,7 +33,7 @@ namespace BlueSeaBattle
 
         private void StartGameLoop()
         {
-            //while (true)
+            while (true)
             {
                 var turn = new Turn(TheSea.GetAllSurvivingShips(), TheSea, Form);
                 turn.Start();
