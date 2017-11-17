@@ -4,8 +4,8 @@
     {
         /// <summary>
         /// Challenge is: 
-        /// prefix sommetje (+ 1 2)
-        /// of infix sommetje: (1 % 3)
+        /// prefix sommetje + 1 2
+        /// of infix sommetje: 1 % 3
         /// De rekenkundige operators zijn: +, -, *, /, %
         /// </summary>
         /// <param name="challenge"></param>

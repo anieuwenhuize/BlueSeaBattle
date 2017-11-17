@@ -48,6 +48,8 @@
     <Compile Include="Albatros.cs" />
     <Compile Include="BackgroundLayer.cs" />
     <Compile Include="BattleShip.cs" />
+    <Compile Include="ChallengeProvider.cs" />
+    <Compile Include="Chance.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="EmptySlot.cs" />

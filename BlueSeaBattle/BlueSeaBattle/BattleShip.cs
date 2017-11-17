@@ -1,4 +1,6 @@
-﻿namespace BlueSeaBattle
+﻿using System.Collections.Generic;
+
+namespace BlueSeaBattle
 {
     public abstract class BattleShip
     {
@@ -19,6 +21,11 @@
             this.Slot3 = new EmptySlot();
             this.Slot4 = new EmptySlot();
             this.Slot5 = new EmptySlot();
+        }
+
+        protected IEnumerable<Coordinate> GetCoordinates()
+        {
+            return this.Location.GetCoordinates();
         }
 
         public bool IsSunk()
