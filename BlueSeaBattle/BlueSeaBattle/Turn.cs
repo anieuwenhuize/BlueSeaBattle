@@ -89,6 +89,8 @@ namespace BlueSeaBattle
             incommin.Launch();
 
             // Move  
+            var sail = new SailAway(battleship);
+            sail.Navigate();
         }
 
         private IEnumerable<Missile> Shoot(CanonAndRadarCombiList weaponcombi, BattleShip battleship)

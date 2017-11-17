@@ -69,6 +69,11 @@ namespace BlueSeaBattle
             return HasCoordinate(missile.GetTarget());
         }
 
+        public void SetLocation(Location destination)
+        {
+            this.Location = destination;
+        }
+
         public Location GetLocation()
         {
             return this.Location;
