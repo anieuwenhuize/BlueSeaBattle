@@ -88,7 +88,7 @@ namespace BlueSeaBattle
 
         private void Delay()
         {
-            System.Threading.Thread.Sleep(500);
+            System.Threading.Thread.Sleep(100);
         }
 
         private void HandleCurrentShip()

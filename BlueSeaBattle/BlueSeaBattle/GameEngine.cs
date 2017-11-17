@@ -73,7 +73,7 @@ namespace BlueSeaBattle
 
         private void Delay()
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(800);
         }
 
         private void UpdateUI()
