@@ -5,7 +5,7 @@
         public Albatros(Location location)
             :base(location)
         {
-
+            this.Slot1 = new TestCanon();
         }
     }
 }

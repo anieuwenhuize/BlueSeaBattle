@@ -46,8 +46,18 @@ namespace BlueSeaBattle
 
                 UpdateUI();
 
+                if (HasWinner())
+                {
+                    return;
+                }
+
                 Delay();
             }
+        }
+
+        private bool HasWinner()
+        {
+            return TheSea.GetAllSurvivingShips().Count() <= 1;
         }
 
         private void Delay()

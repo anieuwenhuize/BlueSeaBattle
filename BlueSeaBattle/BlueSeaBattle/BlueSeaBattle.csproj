@@ -82,6 +82,7 @@
     <Compile Include="SeaSurfaceLayer.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="SunkShip.cs" />
+    <Compile Include="TestCanon.cs" />
     <Compile Include="Turn.cs" />
     <Compile Include="ViewModel.cs" />
     <EmbeddedResource Include="Form1.resx">

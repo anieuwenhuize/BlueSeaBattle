@@ -91,8 +91,6 @@ namespace BlueSeaBattle
             // Move  
         }
 
-        
-
         private IEnumerable<Missile> Shoot(CanonAndRadarCombiList weaponcombi, BattleShip battleship)
         {
             ICollection<Missile> missiles = new List<Missile>();
