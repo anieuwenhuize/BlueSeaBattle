@@ -94,7 +94,7 @@ namespace BlueSeaBattle
 
         public void AddAlbatros(Location location)
         {
-            IFitInSocket captainSlow = new TestCaptain(3, Direction.West);
+            IFitInSocket captainSlow = new TestCaptain(3, Direction.Oost);
             IFitInSocket canon = new TestCanon(new List<ICoordinate>() {
                 new Coordinate(20, 3) });
 
@@ -116,7 +116,7 @@ namespace BlueSeaBattle
 
         public void AddDeEendracht(Location location)
         {
-            IFitInSocket captainQuick = new TestCaptain(1, Direction.Oost);
+            IFitInSocket captainQuick = new TestCaptain(1, Direction.West);
             IFitInSocket canon = new TestCanon(new List<ICoordinate>() {
                 new Coordinate(2, 2) });
 
