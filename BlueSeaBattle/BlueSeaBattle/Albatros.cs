@@ -6,6 +6,7 @@
             :base(location)
         {
             this.Slot1 = new TestCanon();
+            this.Slot2 = new TestCaptain();
         }
     }
 }

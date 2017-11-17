@@ -68,12 +68,14 @@ namespace BlueSeaBattle
 
         private Location MoveEast(Location currentlocation)
         {
-            ICollection<ICoordinate> destination = new List<ICoordinate>();
+            var destination = new List<ICoordinate>();
 
             foreach (ICoordinate currentCoordinate in currentlocation.GetCoordinates())
             {
                 var destinationCoordinate =
                     new Coordinate(currentCoordinate.GetX() + 1, currentCoordinate.GetY());
+
+                destination.Add(destinationCoordinate);
             }
 
             return new Location(destination);

@@ -84,6 +84,7 @@
     <Compile Include="StatusReport.cs" />
     <Compile Include="SunkShip.cs" />
     <Compile Include="TestCanon.cs" />
+    <Compile Include="TestCaptain.cs" />
     <Compile Include="Turn.cs" />
     <Compile Include="ViewModel.cs" />
     <EmbeddedResource Include="Form1.resx">
