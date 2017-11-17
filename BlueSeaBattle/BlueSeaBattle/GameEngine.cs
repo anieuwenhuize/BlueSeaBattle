@@ -11,6 +11,7 @@ namespace BlueSeaBattle
     {
         private Sea TheSea;
         private ViewModel ViewModel;
+        private ICollection<Turn> Turns;
 
         private IUpdateable Form;
 
@@ -18,6 +19,8 @@ namespace BlueSeaBattle
         {
             TheSea = new Sea();
             ViewModel = new ViewModel(this.TheSea);
+
+            Turns = new List<Turn>();
 
             Form = form;
         }
@@ -34,11 +37,22 @@ namespace BlueSeaBattle
 
         private void StartGameLoop()
         {
-            //while (true)
+            while (true)
             {
+                var turn = new Turn(TheSea.GetAllSurvivingShips(), TheSea, Form);
+                turn.Start();
+
+                Turns.Add(turn);
 
                 UpdateUI();
+
+                Delay();
             }
+        }
+
+        private void Delay()
+        {
+            System.Threading.Thread.Sleep(1500);
         }
 
         private void UpdateUI()

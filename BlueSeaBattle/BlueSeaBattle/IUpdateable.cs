@@ -1,6 +1,6 @@
 ﻿namespace BlueSeaBattle
 {
-    interface IUpdateable
+    public interface IUpdateable
     {
         void DoUpdate();
     }

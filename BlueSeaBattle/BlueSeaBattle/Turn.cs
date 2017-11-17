@@ -15,15 +15,16 @@ namespace BlueSeaBattle
 
         public Random Randomizer;
 
-        public Turn(ICollection<BattleShip> BattleShips, Sea sea)
+        public IUpdateable Form;
+
+        public Turn(IEnumerable<BattleShip> BattleShips, Sea sea, IUpdateable form)
         {
             Randomizer = new Random();
             FiredMissiles = new List<Missile>();
 
-            this.BattleShips = BattleShips;
+            this.BattleShips = new List<BattleShip> (BattleShips);
             this.TheSea = sea;
-
-            Visit();
+            this.Form = form;
         }
 
         private T GetRadomItem<T>(ICollection<T> items)
@@ -60,11 +61,13 @@ namespace BlueSeaBattle
             return coordinate;
         }
 
-        private void Visit()
+        public void Start()
         {
             foreach(BattleShip battleShip in BattleShips)
             {
                 HandleShip(battleShip);
+
+                this.Form.DoUpdate();
             }
         }
 
