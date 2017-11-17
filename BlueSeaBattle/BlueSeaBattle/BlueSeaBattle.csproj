@@ -48,6 +48,7 @@
     <Compile Include="Albatros.cs" />
     <Compile Include="BackgroundLayer.cs" />
     <Compile Include="BattleShip.cs" />
+    <Compile Include="BattleshipAssestProvider.cs" />
     <Compile Include="ChallengeProvider.cs" />
     <Compile Include="Chance.cs" />
     <Compile Include="Coordinate.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="SeaSurfaceLayer.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="SunkShip.cs" />
+    <Compile Include="Turn.cs" />
     <Compile Include="ViewModel.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

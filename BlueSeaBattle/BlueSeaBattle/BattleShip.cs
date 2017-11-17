@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 
 namespace BlueSeaBattle
 {
     public abstract class BattleShip
     {
-        protected IFitInSocket Slot1;
+        public IFitInSocket Slot1;
         protected IFitInSocket Slot2;
         protected IFitInSocket Slot3;
         protected IFitInSocket Slot4;
@@ -21,6 +22,17 @@ namespace BlueSeaBattle
             this.Slot3 = new EmptySlot();
             this.Slot4 = new EmptySlot();
             this.Slot5 = new EmptySlot();
+        }
+
+        public IEnumerable<IFitInSocket> GetSlotItems()
+        {
+            IEnumerable<IFitInSocket> slotitems = new List<IFitInSocket>()
+                {
+                    this.Slot1, this.Slot2,this.Slot3,this.Slot4, this.Slot5
+                }
+                .Where(x => x != null);
+
+            return slotitems;
         }
 
         protected IEnumerable<Coordinate> GetCoordinates()
