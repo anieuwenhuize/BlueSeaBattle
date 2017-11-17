@@ -74,22 +74,38 @@ namespace BlueSeaBattle
             var canons = assetsprovider.GetCanons();
             var radars = assetsprovider.GetRadars();
 
-            var combi = new CanonAndRadarCombiList(canons, radars);
+            var weaponscombi = new CanonAndRadarCombiList(canons, radars);
 
-            foreach (Tuple<IKanon, IRadar> weapons in combi)
-            {
-                Shoot(weapons);
-            }
+            IEnumerable<Missile> missiles = Shoot(weaponscombi, battleship);
+
+            TheSea.AcceptMissiles(missiles);
 
             // Move  
         }
 
-        private ICoordinate Shoot(Tuple<IKanon, IRadar> weaponcombi)
+        
+
+        private IEnumerable<Missile> Shoot(CanonAndRadarCombiList weaponcombi, BattleShip battleship)
+        {
+            ICollection<Missile> missiles = new List<Missile>();
+
+            foreach (Tuple<IKanon, IRadar> weapons in weaponcombi)
+            {
+                ICoordinate coordinate = TakeShot(weapons);
+                Missile missile = new Missile(coordinate, battleship);
+
+                missiles.Add(missile);
+            }
+
+            return missiles;
+        }
+
+        private ICoordinate TakeShot(Tuple<IKanon, IRadar> weaponcombi)
         {
             IRadar radar = weaponcombi.Item2;
             IKanon canon = weaponcombi.Item1;
 
-            if(radar != null)
+            if (radar != null)
             {
                 ICoordinate givenTarget = GetRandomShipCoordinate();
                 ICoordinate target = radar.Parse(givenTarget.GetX(), givenTarget.GetY());

@@ -2,16 +2,16 @@
 {
     public class Missile
     {
-        private Coordinate Target;
+        private ICoordinate Target;
         private BattleShip Owner;
 
-        public Missile(Coordinate target, BattleShip owner)
+        public Missile(ICoordinate target, BattleShip owner)
         {
             this.Target = target;
             this.Owner = owner;
         }
 
-        public Coordinate GetTarget()
+        public ICoordinate GetTarget()
         {
             return this.Target;
         }
