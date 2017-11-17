@@ -17,6 +17,8 @@ namespace BlueSeaBattle
 
         public IUpdateable Form;
 
+        private BattleShip CurrentShip;
+
         public Turn(IEnumerable<BattleShip> BattleShips, Sea sea, IUpdateable form)
         {
             Randomizer = new Random();
@@ -25,6 +27,15 @@ namespace BlueSeaBattle
             this.BattleShips = new List<BattleShip> (BattleShips);
             this.TheSea = sea;
             this.Form = form;
+        }
+
+        public virtual string GetCurrentShipDescripton()
+        {
+            bool hasCurrentShip = CurrentShip != null;
+
+            return (hasCurrentShip)
+                ? CurrentShip.ToString()
+                : "Geen schip";
         }
 
         private T GetRadomItem<T>(ICollection<T> items)
@@ -65,15 +76,24 @@ namespace BlueSeaBattle
         {
             foreach(BattleShip battleShip in BattleShips)
             {
-                HandleShip(battleShip);
+                CurrentShip = battleShip;
+
+                HandleCurrentShip();
 
                 this.Form.DoUpdate();
+
+                Delay();
             }
         }
 
-        private void HandleShip(BattleShip battleship)
+        private void Delay()
         {
-            BattleshipAssestProvider assetsprovider = new BattleshipAssestProvider(battleship);
+            System.Threading.Thread.Sleep(500);
+        }
+
+        private void HandleCurrentShip()
+        {
+            BattleshipAssestProvider assetsprovider = new BattleshipAssestProvider(CurrentShip);
 
             // Shoot first
             var canons = assetsprovider.GetCanons();
@@ -81,7 +101,7 @@ namespace BlueSeaBattle
 
             var weaponscombi = new CanonAndRadarCombiList(canons, radars);
 
-            IEnumerable<Missile> missiles = Shoot(weaponscombi, battleship);
+            IEnumerable<Missile> missiles = Shoot(weaponscombi, CurrentShip);
 
             this.FiredMissiles.AddRange(missiles);
 
@@ -89,7 +109,7 @@ namespace BlueSeaBattle
             incommin.Launch();
 
             // Move  
-            var sail = new SailAway(battleship);
+            var sail = new SailAway(CurrentShip);
             sail.Navigate();
         }
 

@@ -6,7 +6,11 @@
         private int NumberOfSunkShips;
         private int NumberOfTurns;
 
-        public StatusReport(int numerOfShips, int numberOfSunkShips, int numberOfTurns)
+        public string CurrentShipDescription { get; set; }
+
+        public StatusReport(int numerOfShips, 
+            int numberOfSunkShips, 
+            int numberOfTurns)
         {
             NumberOfShips = numerOfShips;
             NumberOfSunkShips = numberOfSunkShips;

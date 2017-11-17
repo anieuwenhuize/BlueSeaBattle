@@ -34,6 +34,8 @@
             this.labelTotalShips = new System.Windows.Forms.Label();
             this.labelSunkShips = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelCurrentShip = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Gridpanel
@@ -89,11 +91,31 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Sunk";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1028, 134);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Ship";
+            // 
+            // labelCurrentShip
+            // 
+            this.labelCurrentShip.AutoSize = true;
+            this.labelCurrentShip.Location = new System.Drawing.Point(1028, 160);
+            this.labelCurrentShip.Name = "labelCurrentShip";
+            this.labelCurrentShip.Size = new System.Drawing.Size(14, 13);
+            this.labelCurrentShip.TabIndex = 8;
+            this.labelCurrentShip.Text = "#";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1164, 589);
+            this.Controls.Add(this.labelCurrentShip);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.labelSunkShips);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelTotalShips);
@@ -115,6 +137,8 @@
         private System.Windows.Forms.Label labelTotalShips;
         private System.Windows.Forms.Label labelSunkShips;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelCurrentShip;
     }
 }
 

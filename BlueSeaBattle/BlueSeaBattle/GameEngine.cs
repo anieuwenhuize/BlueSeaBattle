@@ -8,6 +8,7 @@ namespace BlueSeaBattle
         private Sea TheSea;
         private ViewModel ViewModel;
         private ICollection<Turn> Turns;
+        private Turn CurrentTurn;
 
         private IUpdateable Form;
 
@@ -17,6 +18,7 @@ namespace BlueSeaBattle
             ViewModel = new ViewModel(this.TheSea);
 
             Turns = new List<Turn>();
+            CurrentTurn = new NoTurn(new List<BattleShip>(), TheSea, Form);
 
             Form = form;
         }
@@ -35,10 +37,9 @@ namespace BlueSeaBattle
         {
             while (true)
             {
-                var turn = new Turn(TheSea.GetAllSurvivingShips(), TheSea, Form);
-                turn.Start();
+                CurrentTurn = new Turn(TheSea.GetAllSurvivingShips(), TheSea, Form);
 
-                Turns.Add(turn);
+                CurrentTurn.Start();
 
                 UpdateUI();
 
@@ -46,6 +47,8 @@ namespace BlueSeaBattle
                 {
                     return;
                 }
+
+                Turns.Add(CurrentTurn);
 
                 Delay();
             }
@@ -58,6 +61,7 @@ namespace BlueSeaBattle
             int allShips = allSurvivingShips + allSunkShips;
 
             var statusreport = new StatusReport(allShips, allSunkShips, this.Turns.Count());
+            statusreport.CurrentShipDescription = CurrentTurn.GetCurrentShipDescripton();
 
             return statusreport;
         }
@@ -113,7 +117,7 @@ namespace BlueSeaBattle
 
             var location = new Location(c1, c2, c3, c4, c5);
 
-            BattleShip albatros = new Albatros(location);
+            BattleShip albatros = new SnelleJelle(location);
 
             TheSea.AcceptShip(albatros);
         }

@@ -110,9 +110,10 @@ namespace BlueSeaBattle
         private void UpdateStatus()
         {
             var statusreport = Game.GetStatusReport();
-            this.labelTotalShips.Text = statusreport.GetNumerOfShips();
 
+            this.labelTotalShips.Text = statusreport.GetNumerOfShips();
             this.labelSunkShips.Text = statusreport.GetNumberOfSunkShips();
+            this.labelCurrentShip.Text = statusreport.CurrentShipDescription;
         }
 
         private void button1_Click(object sender, EventArgs e)
