@@ -8,6 +8,9 @@ namespace BlueSeaBattle
 {
     public class Sea
     {
+        public const int GridWidth = 24;
+        public const int GridHeight = 12;
+
         public static IEnumerable<Coordinate> GetAllCoordinatesFrom(IEnumerable<BattleShip> ships)
         {
             IEnumerable<Coordinate> allLocations = ships

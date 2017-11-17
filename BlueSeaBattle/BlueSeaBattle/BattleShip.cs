@@ -24,6 +24,16 @@ namespace BlueSeaBattle
             this.Slot5 = new EmptySlot();
         }
 
+        protected int GetMaxX()
+        {
+            return Sea.GridWidth;
+        }
+
+        protected int GetMaxY()
+        {
+            return Sea.GridHeight;
+        }
+
         public IEnumerable<IFitInSocket> GetSlotItems()
         {
             IEnumerable<IFitInSocket> slotitems = new List<IFitInSocket>()

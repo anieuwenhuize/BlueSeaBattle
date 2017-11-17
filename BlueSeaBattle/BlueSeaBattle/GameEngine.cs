@@ -64,6 +64,11 @@ namespace BlueSeaBattle
             return ViewModel;
         }
 
+        public Sea GetSea()
+        {
+            return TheSea;
+        }
+
         private void AddSurvivingShip()
         {
             var c1 = new Coordinate(0, 1);

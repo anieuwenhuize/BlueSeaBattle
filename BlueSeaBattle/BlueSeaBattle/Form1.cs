@@ -13,8 +13,6 @@ namespace BlueSeaBattle
     public partial class Form1 : Form, IUpdateable
     {
         private const int PixelWidth = 25;
-        private const int GridWidth = 24;
-        private const int GridHeight = 12;
 
         private GameEngine Game;
 
@@ -62,10 +60,10 @@ namespace BlueSeaBattle
 
         private void CreateGrid()
         {
-            this.Gridpanel.Size = new Size((GridWidth * PixelWidth), (GridHeight * PixelWidth));
-            for (int i=0; i<= GridWidth; i++)
+            this.Gridpanel.Size = new Size((Sea.GridWidth * PixelWidth), (Sea.GridHeight * PixelWidth));
+            for (int i=0; i<= Sea.GridWidth; i++)
             {
-                for (int j = 0; j <= GridHeight; j++)
+                for (int j = 0; j <= Sea.GridHeight; j++)
                 {
                     string naam = GetPixelNaam(i, j);
 
@@ -81,9 +79,9 @@ namespace BlueSeaBattle
 
         public void RepaintGrid()
         {
-            for (int i = 0; i <= GridWidth; i++)
+            for (int i = 0; i <= Sea.GridWidth; i++)
             {
-                for (int j = 0; j <= GridHeight; j++)
+                for (int j = 0; j <= Sea.GridHeight; j++)
                 {
                     string naam = GetPixelNaam(i, j);
 

@@ -8,13 +8,32 @@ namespace BlueSeaBattle
 {
     public class Turn
     {
-        private BattleShip BattleShips;
+        private IEnumerable<BattleShip> BattleShips;
 
-        public Turn(BattleShip BattleShips)
+        public Turn(IEnumerable<BattleShip> BattleShips)
         {
             this.BattleShips = BattleShips;
+
+            Visit();
         }
 
+        private void Visit()
+        {
+            foreach(BattleShip battleShip in BattleShips)
+            {
+                BattleshipAssestProvider assetsprovider = new BattleshipAssestProvider(battleShip);
+
+                // Shoot first
+
+
+                // Move  
+            }
+        }
+
+        private void HandleShip(BattleShip ship)
+        {
+
+        }
 
     }
 }
