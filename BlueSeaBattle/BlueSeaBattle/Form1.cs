@@ -100,14 +100,19 @@ namespace BlueSeaBattle
 
         public void DoUpdate()
         {
+            UpdateStatus();
+
             RepaintGrid();
 
             this.Refresh();
         }
 
-        private void updateStatus()
+        private void UpdateStatus()
         {
-           // this.labelTotalShips.Text
+            var statusreport = Game.GetStatusReport();
+            this.labelTotalShips.Text = statusreport.GetNumerOfShips();
+
+            this.labelSunkShips.Text = statusreport.GetNumberOfSunkShips();
         }
 
         private void button1_Click(object sender, EventArgs e)

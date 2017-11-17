@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace BlueSeaBattle
 {
@@ -55,6 +51,17 @@ namespace BlueSeaBattle
             }
         }
 
+        public StatusReport GetStatusReport()
+        {
+            int allSurvivingShips = TheSea.GetAllSurvivingShips().Count();
+            int allSunkShips = TheSea.GetAllSunkShips().Count();
+            int allShips = allSurvivingShips + allSunkShips;
+
+            var statusreport = new StatusReport(allShips, allSunkShips, this.Turns.Count());
+
+            return statusreport;
+        }
+
         private bool HasWinner()
         {
             return TheSea.GetAllSurvivingShips().Count() <= 1;
@@ -96,6 +103,21 @@ namespace BlueSeaBattle
             TheSea.AcceptShip(albatros);
         }
 
+        private void AddSurvivingShip2()
+        {
+            var c1 = new Coordinate(0, 4);
+            var c2 = new Coordinate(1, 4);
+            var c3 = new Coordinate(2, 4);
+            var c4 = new Coordinate(3, 4);
+            var c5 = new Coordinate(4, 4);
+
+            var location = new Location(c1, c2, c3, c4, c5);
+
+            BattleShip albatros = new Albatros(location);
+
+            TheSea.AcceptShip(albatros);
+        }
+
         private void AddSunkShip()
         {
             var c1 = new Coordinate(2, 2);
@@ -116,6 +138,8 @@ namespace BlueSeaBattle
             AddSunkShip();
 
             AddSurvivingShip();
+
+            AddSurvivingShip2();
         }
     }
 }

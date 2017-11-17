@@ -80,7 +80,7 @@
     <Compile Include="Sea.cs" />
     <Compile Include="SeaBottomLayer.cs" />
     <Compile Include="SeaSurfaceLayer.cs" />
-    <Compile Include="Status.cs" />
+    <Compile Include="StatusReport.cs" />
     <Compile Include="SunkShip.cs" />
     <Compile Include="TestCanon.cs" />
     <Compile Include="Turn.cs" />
