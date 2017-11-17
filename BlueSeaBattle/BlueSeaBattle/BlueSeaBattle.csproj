@@ -49,6 +49,7 @@
     <Compile Include="BackgroundLayer.cs" />
     <Compile Include="BattleShip.cs" />
     <Compile Include="BattleshipAssestProvider.cs" />
+    <Compile Include="Challenge.cs" />
     <Compile Include="ChallengeProvider.cs" />
     <Compile Include="Chance.cs" />
     <Compile Include="Coordinate.cs" />
