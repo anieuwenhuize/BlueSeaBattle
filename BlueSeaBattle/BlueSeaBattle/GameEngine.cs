@@ -69,7 +69,7 @@ namespace BlueSeaBattle
 
         private void Delay()
         {
-            System.Threading.Thread.Sleep(800);
+            System.Threading.Thread.Sleep(0);
         }
 
         private void UpdateUI()
@@ -89,11 +89,12 @@ namespace BlueSeaBattle
 
         public void AddAlbatros(Location location)
         {
-            IFitInSocket captainSlow = new TestCaptain(3, Direction.Oost);
+            IFitInSocket captainQuick = new TestCaptain(1, Direction.West);
             IFitInSocket canon = new TestCanon(new List<ICoordinate>() {
-                new Coordinate(15, 1) });
+                new Coordinate(2, 2) });
 
-            BattleShip albatros = new TestShip("Albatros", location, captainSlow, canon);
+            BattleShip albatros = new TestShip("Albatros", location, 
+                captainQuick, captainQuick, captainQuick, captainQuick, captainQuick);
 
             TheSea.AcceptShip(albatros);
         }
@@ -111,11 +112,11 @@ namespace BlueSeaBattle
 
         public void AddDeEendracht(Location location)
         {
-            IFitInSocket captainQuick = new TestCaptain(1, Direction.West);
+            IFitInSocket captainSlow = new TestCaptain(3, Direction.Oost);
             IFitInSocket canon = new TestCanon(new List<ICoordinate>() {
-                new Coordinate(2, 2) });
+                new Coordinate(16, 1) });
 
-            BattleShip albatros = new TestShip("De Eendracht", location, captainQuick, canon);
+            BattleShip albatros = new TestShip("De Eendracht", location, captainSlow, canon);
 
             TheSea.AcceptShip(albatros);
         }
