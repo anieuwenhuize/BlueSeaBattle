@@ -61,5 +61,33 @@ namespace BlueSeaBattle
 
             return allSurvivingShips;
         }
+
+        public bool IsValid(Location location)
+        {
+            var locationCoordinates = location.GetCoordinates();
+
+            var lowestX = locationCoordinates
+                .Select(x => x.GetX())
+                .Min();
+
+            var highestX = locationCoordinates
+                .Select(x => x.GetX())
+                .Max();
+
+            var lowestY = locationCoordinates
+                .Select(x => x.GetY())
+                .Min();
+
+            var highestY = locationCoordinates
+                .Select(x => x.GetY())
+                .Max();
+
+            var isValid = lowestX >= 0
+                && lowestY >= 0
+                && highestX < GridWidth
+                && highestY < GridHeight;
+
+            return isValid;
+        }
     }
 }

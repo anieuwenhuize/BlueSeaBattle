@@ -31,12 +31,15 @@ namespace BlueSeaBattle
 
         private bool IsNewLocationValid(Location location, BattleShip battleship)
         {
-            // no collision
             var collisiondetection = new CollisionDetection(TheSea, Ship);
 
-            // no outside seaboundaries
+            // no collision
+            var isValid = collisiondetection.IsLocationValid(location)
+                
+                // no outside seaboundaries
+                && TheSea.IsValid(location);
 
-            return collisiondetection.IsLocationValid(location);
+            return isValid;
         }
 
         public void MoveShip(IKapitein captain)
