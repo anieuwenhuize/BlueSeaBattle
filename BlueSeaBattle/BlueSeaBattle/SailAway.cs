@@ -71,7 +71,7 @@ namespace BlueSeaBattle
 
         private ICoordinate MoveNorth(ICoordinate from)
         {
-            var to = new Coordinate(from.GetX(), from.GetY() + 1);
+            var to = new Coordinate(from.GetX(), from.GetY() - 1);
 
             return to;
         }
@@ -85,7 +85,7 @@ namespace BlueSeaBattle
 
         private ICoordinate MoveSouth(ICoordinate from)
         {
-            var to = new Coordinate(from.GetX(), from.GetY() - 1);
+            var to = new Coordinate(from.GetX(), from.GetY() + 1);
 
             return to;
         }

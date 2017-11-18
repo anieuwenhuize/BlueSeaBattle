@@ -121,6 +121,17 @@ namespace BlueSeaBattle
             TheSea.AcceptShip(albatros);
         }
 
+        public void AddDeVliegendeHollander(Location location)
+        {
+            IFitInSocket captain = new TestCaptain(1, Direction.Noord);
+            IFitInSocket canon = new TestCanon(new List<ICoordinate>() {
+                new Coordinate(1, 1) });
+
+            BattleShip albatros = new TestShip("De Vliegende Hollander", location, captain, canon);
+
+            TheSea.AcceptShip(albatros);
+        }
+
         public void PlaceShips()
         {
             var plan = new Plan();
@@ -128,6 +139,7 @@ namespace BlueSeaBattle
             AddAlbatros(plan.GetNexLocation());
             AddSallySinke(plan.GetNexLocation());
             AddDeEendracht(plan.GetNexLocation());
+            AddDeVliegendeHollander(plan.GetNexLocation());
         }
     }
 }
