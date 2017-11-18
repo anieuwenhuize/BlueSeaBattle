@@ -91,7 +91,7 @@ namespace BlueSeaBattle
         {
             IFitInSocket captainSlow = new TestCaptain(3, Direction.Oost);
             IFitInSocket canon = new TestCanon(new List<ICoordinate>() {
-                new Coordinate(20, 3) });
+                new Coordinate(15, 1) });
 
             BattleShip albatros = new TestShip("Albatros", location, captainSlow, canon);
 
