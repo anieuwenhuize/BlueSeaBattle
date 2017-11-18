@@ -33,11 +33,11 @@ namespace BlueSeaBattle
                 new Coordinate(4, 8)));
 
             Location.Add(new Location(
-                new Coordinate(12, 8),
-                new Coordinate(12, 9),
-                new Coordinate(12, 10),
-                new Coordinate(12, 11),
-                new Coordinate(12, 12)));
+                new Coordinate(14, 8),
+                new Coordinate(14, 9),
+                new Coordinate(14, 10),
+                new Coordinate(14, 11),
+                new Coordinate(14, 12)));
         }
 
         public Location GetNexLocation()

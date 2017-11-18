@@ -109,7 +109,7 @@ namespace BlueSeaBattle
             incommin.Launch();
 
             // Move  
-            var sail = new SailAway(CurrentShip);
+            var sail = new SailAway(CurrentShip, TheSea);
             sail.Navigate();
         }
 

@@ -7,10 +7,12 @@ namespace BlueSeaBattle
     public class SailAway
     {
         private BattleShip Ship;
+        private Sea TheSea;
 
-        public SailAway(BattleShip ship)
+        public SailAway(BattleShip ship, Sea sea)
         {
             Ship = ship;
+            TheSea = sea;
         }
 
         public void Navigate()
@@ -27,13 +29,26 @@ namespace BlueSeaBattle
             }
         }
 
+        private bool IsNewLocationValid(Location location, BattleShip battleship)
+        {
+            // no collision
+            var collisiondetection = new CollisionDetection(TheSea, Ship);
+
+            // no outside seaboundaries
+
+            return collisiondetection.IsLocationValid(location);
+        }
+
         public void MoveShip(IKapitein captain)
         {
             Location from = Ship.GetLocation();
 
             Location to = GetNewLocation(from, captain);
 
-            Ship.SetLocation(to);
+            if(IsNewLocationValid(to, Ship))
+            {
+                Ship.SetLocation(to);
+            }
         }
 
         private Location GetNewLocation(Location from, IKapitein captain)
