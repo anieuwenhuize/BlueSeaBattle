@@ -9,14 +9,17 @@ namespace BlueSeaBattle
     public class ViewModel: ILayer
     {
         private Sea TheSea;
+        private IUpdateable Form;
 
         private ILayer BackgroundLayer;
         private ILayer SeaBottomLayer; 
         private ILayer SeaSurfaceLayer;
 
-        public ViewModel(Sea Sea)
+        public ViewModel(Sea Sea, IUpdateable form)
         {
             TheSea = Sea;
+
+            Form = form;
 
             BackgroundLayer = new BackgroundLayer();
             SeaBottomLayer = new SeaBottomLayer(this.TheSea);
@@ -40,6 +43,15 @@ namespace BlueSeaBattle
             BackgroundLayer.Recalculate();
             SeaBottomLayer.Recalculate();
             SeaSurfaceLayer.Recalculate();
+
+            Form.DoUpdate();
+        }
+
+        public void RecalculateSurface()
+        {
+            SeaSurfaceLayer.Recalculate();
+
+            Form.DoUpdate();
         }
     }
 }

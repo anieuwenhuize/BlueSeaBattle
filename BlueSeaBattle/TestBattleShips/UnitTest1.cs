@@ -18,7 +18,7 @@ namespace TestBattleShips
             var c5 = new Coordinate(4, 1);
 
             var location = new Location(c1, c2, c3, c4, c5);
-            BattleShip ship = new Albatros(location);
+            BattleShip ship = new TestShip("", location);
 
             // Act
             var missile1 = new Missile(c1, ship);
@@ -39,7 +39,7 @@ namespace TestBattleShips
             var c5 = new Coordinate(4, 1);
 
             var location = new Location(c1, c2, c3, c4, c5);
-            BattleShip ship = new Albatros(location);
+            BattleShip ship = new TestShip("", location);
 
             // Act
             var missile1 = new Missile(c1, ship);
@@ -69,7 +69,7 @@ namespace TestBattleShips
             var c5 = new Coordinate(4, 1);
 
             var location = new Location(c1, c2, c3, c4, c5);
-            BattleShip ship = new Albatros(location);
+            BattleShip ship = new TestShip("", location);
 
             // Act
             var missile1 = new Missile(c1, ship);

@@ -33,6 +33,13 @@
             : this(name, location, slot1, slot2, new EmptySlot(), new EmptySlot(), new EmptySlot())
         {}
 
+        public TestShip(
+            string name,
+            Location location
+            )
+            : this(name, location, new EmptySlot(), new EmptySlot(), new EmptySlot(), new EmptySlot(), new EmptySlot())
+        { }
+
         public override string ToString()
         {
             return $"{Name}";

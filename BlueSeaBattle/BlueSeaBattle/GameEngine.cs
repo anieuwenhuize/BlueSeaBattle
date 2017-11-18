@@ -10,17 +10,13 @@ namespace BlueSeaBattle
         private ICollection<Turn> Turns;
         private Turn CurrentTurn;
 
-        private IUpdateable Form;
-
         public GameEngine(IUpdateable form)
         {
             TheSea = new Sea();
-            ViewModel = new ViewModel(this.TheSea);
+            ViewModel = new ViewModel(this.TheSea, form);
 
             Turns = new List<Turn>();
-            CurrentTurn = new NoTurn(new List<BattleShip>(), TheSea, Form);
-
-            Form = form;
+            CurrentTurn = new NoTurn(new List<BattleShip>(), TheSea, ViewModel);
         }
 
         public void Start()
@@ -37,7 +33,7 @@ namespace BlueSeaBattle
         {
             while (true)
             {
-                CurrentTurn = new Turn(TheSea.GetAllSurvivingShips(), TheSea, Form);
+                CurrentTurn = new Turn(TheSea.GetAllSurvivingShips(), TheSea, ViewModel);
 
                 CurrentTurn.Start();
 
@@ -78,8 +74,7 @@ namespace BlueSeaBattle
 
         private void UpdateUI()
         {
-            ViewModel.Recalculate();
-            Form.DoUpdate();
+            ViewModel.RecalculateSurface();
         }
 
         public ViewModel GetViewModel()

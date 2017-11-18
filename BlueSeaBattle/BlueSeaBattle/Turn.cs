@@ -15,18 +15,18 @@ namespace BlueSeaBattle
 
         public Random Randomizer;
 
-        public IUpdateable Form;
+        public ViewModel ViewModel;
 
         private BattleShip CurrentShip;
 
-        public Turn(IEnumerable<BattleShip> BattleShips, Sea sea, IUpdateable form)
+        public Turn(IEnumerable<BattleShip> BattleShips, Sea sea, ViewModel viewModel)
         {
             Randomizer = new Random();
             FiredMissiles = new List<Missile>();
 
             this.BattleShips = new List<BattleShip> (BattleShips);
             this.TheSea = sea;
-            this.Form = form;
+            this.ViewModel = viewModel;
         }
 
         public virtual string GetCurrentShipDescripton()
@@ -80,7 +80,7 @@ namespace BlueSeaBattle
 
                 HandleCurrentShip();
 
-                this.Form.DoUpdate();
+                this.ViewModel.Recalculate();
 
                 Delay();
             }
