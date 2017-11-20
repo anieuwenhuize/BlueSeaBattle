@@ -88,7 +88,7 @@ namespace BlueSeaBattle
 
         private void Delay()
         {
-            System.Threading.Thread.Sleep(100);
+            System.Threading.Thread.Sleep(00);
         }
 
         private void HandleCurrentShip()
@@ -117,7 +117,7 @@ namespace BlueSeaBattle
         {
             ICollection<Missile> missiles = new List<Missile>();
 
-            foreach (Tuple<IKanon, IRadar> weapons in weaponcombi)
+            foreach (System.Tuple<IKanon, IRadar> weapons in weaponcombi)
             {
                 ICoordinate coordinate = TakeShot(weapons);
                 Missile missile = new Missile(coordinate, battleship);
@@ -128,7 +128,7 @@ namespace BlueSeaBattle
             return missiles;
         }
 
-        private ICoordinate TakeShot(Tuple<IKanon, IRadar> weaponcombi)
+        private ICoordinate TakeShot(System.Tuple<IKanon, IRadar> weaponcombi)
         {
             IRadar radar = weaponcombi.Item2;
             IKanon canon = weaponcombi.Item1;

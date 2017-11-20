@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlueSeaBattle
 {
-    public class ViewModel: ILayer
+    public class ViewModel
     {
         private Sea TheSea;
         private IUpdateable Form;
@@ -45,6 +45,24 @@ namespace BlueSeaBattle
             SeaSurfaceLayer.Recalculate();
 
             Form.DoUpdate();
+        }
+
+        public ConcreteLayer GetGrid()
+        {
+            var gridstate = new ConcreteLayer();
+
+            for (int i = 0; i <= Sea.GridWidth; i++)
+            {
+                for (int j = 0; j <= Sea.GridHeight; j++)
+                {
+                    int value = GetDisplayValue(i, j);
+                    var key = new Tuple<int, int>(i, j);
+
+                    gridstate.Add(key, value);
+                }
+            }
+
+            return gridstate;
         }
 
         public void RecalculateSurface()

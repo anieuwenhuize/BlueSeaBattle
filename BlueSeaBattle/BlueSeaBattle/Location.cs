@@ -45,6 +45,50 @@ namespace BlueSeaBattle
             return hasCoordinate;
         }
 
+        public bool IsXInLine()
+        {
+            bool isXInLine = this.Coordinates.ElementAt(0).GetX() == this.Coordinates.ElementAt(1).GetX();
+
+            return isXInLine;
+        }
+
+        public bool IsYInLine()
+        {
+            bool isYInLine = this.Coordinates.ElementAt(0).GetY() == this.Coordinates.ElementAt(1).GetY();
+
+            return isYInLine;
+        }
+
+        public Location GetWithXinline()
+        {
+            ICoordinate pivot = this.Coordinates.ElementAt(2);
+
+            IEnumerable<ICoordinate> coordinates = new List<ICoordinate>() {
+                new Coordinate(pivot.GetX(), pivot.GetY() - 2),
+                new Coordinate(pivot.GetX(), pivot.GetY() - 1),
+                new Coordinate(pivot.GetX(), pivot.GetY()),
+                new Coordinate(pivot.GetX(), pivot.GetY() + 1),
+                new Coordinate(pivot.GetX(), pivot.GetY() + 2)
+            };
+
+            return new Location(coordinates);
+        }
+
+        public Location GetWithYinline()
+        {
+            ICoordinate pivot = this.Coordinates.ElementAt(2);
+
+            IEnumerable<ICoordinate> coordinates = new List<ICoordinate>() {
+                new Coordinate(pivot.GetX() - 2, pivot.GetY()),
+                new Coordinate(pivot.GetX() - 1, pivot.GetY()),
+                new Coordinate(pivot.GetX(), pivot.GetY()),
+                new Coordinate(pivot.GetX() + 1, pivot.GetY()),
+                new Coordinate(pivot.GetX() + 2, pivot.GetY())
+            };
+
+            return new Location(coordinates);
+        }
+
         public int GetIndex(ICoordinate coordinate)
         {
             int index = 1;

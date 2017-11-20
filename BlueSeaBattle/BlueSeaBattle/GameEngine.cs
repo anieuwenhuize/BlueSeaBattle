@@ -91,7 +91,7 @@ namespace BlueSeaBattle
         {
             IFitInSocket captainQuick = new TestCaptain(1, Direction.West);
             IFitInSocket canon = new TestCanon(new List<ICoordinate>() {
-                new Coordinate(2, 2) });
+                new Coordinate(1, 1) });
 
             BattleShip albatros = new TestShip("Albatros", location, 
                 captainQuick, captainQuick, captainQuick, captainQuick, captainQuick);
@@ -103,7 +103,7 @@ namespace BlueSeaBattle
         {
             IFitInSocket captainNormal = new TestCaptain(2, Direction.West);
             IFitInSocket canon = new TestCanon(new List<ICoordinate>() {
-                new Coordinate(2, 2) });
+                new Coordinate(1, 1) });
 
             BattleShip albatros = new TestShip("Sally Sinke", location, captainNormal, canon);
 
@@ -112,11 +112,13 @@ namespace BlueSeaBattle
 
         public void AddDeEendracht(Location location)
         {
-            IFitInSocket captainSlow = new TestCaptain(3, Direction.Oost);
+            TestCaptain captainCircle = new TestCaptain(1, Direction.Oost);
+            captainCircle.EnableCircles();
+
             IFitInSocket canon = new TestCanon(new List<ICoordinate>() {
                 new Coordinate(14, 1) });
 
-            BattleShip albatros = new TestShip("De Eendracht", location, captainSlow, canon);
+            BattleShip albatros = new TestShip("De Eendracht", location, captainCircle, canon);
 
             TheSea.AcceptShip(albatros);
         }

@@ -57,9 +57,48 @@ namespace BlueSeaBattle
         private Location GetNewLocation(Location from, IKapitein captain)
         {
             var direction = captain.GetDirection();
+            
+            if( ShouldTurn(direction, from))
+            {
+                return GetNewLocationByTurning(direction, from);
+            }
+
+            return GetNewLocationByMoving(direction, from);
+        }
+
+        private bool ShouldTurn(Direction direction, Location location)
+        {
+            if (direction == Direction.Noord 
+                || direction == Direction.Zuid)
+            {
+                return location.IsYInLine();
+            }
+
+            else
+            {
+                return location.IsXInLine();
+            }
+        }
+
+        private Location GetNewLocationByTurning(Direction direction, Location from)
+        {
+            if (direction == Direction.Noord
+               || direction == Direction.Zuid)
+            {
+                return from.GetWithXinline();
+            }
+
+            else
+            {
+                return from.GetWithYinline();
+            }
+        }
+
+        private Location GetNewLocationByMoving(Direction direction, Location from)
+        {
             ICollection<ICoordinate> to = new List<ICoordinate>();
 
-            foreach(ICoordinate current in from.GetCoordinates())
+            foreach (ICoordinate current in from.GetCoordinates())
             {
                 switch (direction)
                 {

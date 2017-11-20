@@ -2,7 +2,7 @@
 
 namespace BlueSeaBattle
 {
-    public class Coordinate : Tuple<int, int>, ICoordinate
+    public class Coordinate : System.Tuple<int, int>, ICoordinate
     {
         public Coordinate(int item1, int item2) 
             : base(item1, item2)

@@ -49,10 +49,12 @@
     <Compile Include="BattleShip.cs" />
     <Compile Include="BattleshipAssestProvider.cs" />
     <Compile Include="CanonAndRadarCombiList.cs" />
+    <Compile Include="Carousel.cs" />
     <Compile Include="Challenge.cs" />
     <Compile Include="ChallengeProvider.cs" />
     <Compile Include="Chance.cs" />
     <Compile Include="CollisionDetection.cs" />
+    <Compile Include="ConcreteLayer.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="EmptySlot.cs" />

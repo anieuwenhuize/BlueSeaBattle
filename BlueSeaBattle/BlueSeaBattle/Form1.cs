@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BlueSeaBattle
@@ -17,6 +12,8 @@ namespace BlueSeaBattle
         private GameEngine Game;
 
         private IDictionary<int, Color> LayerValueToColorMapping;
+
+        private ConcreteLayer LastGridState;
         
         public Form1()
         {
@@ -38,6 +35,8 @@ namespace BlueSeaBattle
             CreateGrid();
 
             Game = new GameEngine(this);
+
+            LastGridState = null;
         }
 
         private PictureBox CreatePixel(int x, int y, string naam)
@@ -79,22 +78,40 @@ namespace BlueSeaBattle
 
         public void RepaintGrid()
         {
-            for (int i = 0; i <= Sea.GridWidth; i++)
+            ViewModel vm = this.Game.GetViewModel();
+            ConcreteLayer gridToDraw = null;
+
+            // Reset or start state
+            if (this.LastGridState == null)
             {
-                for (int j = 0; j <= Sea.GridHeight; j++)
-                {
-                    string naam = GetPixelNaam(i, j);
+                this.LastGridState = vm.GetGrid();
+                DrawGrid(this.LastGridState);
+            }
 
-                    bool searchAllChildren = false;
-                    Control control = this.Gridpanel.Controls.Find(naam, searchAllChildren)[0];
+            else
+            {
+                ConcreteLayer newGridState = this.Game.GetViewModel().GetGrid();
+                ConcreteLayer newGridStateDiff = ConcreteLayer.CaluculateDiff(this.LastGridState, newGridState);
+                this.LastGridState = newGridState;
+                DrawGrid(newGridStateDiff);
+            }
+        }
 
-                    PictureBox pixel = (PictureBox)control;
+        private void DrawGrid(ConcreteLayer gridstate)
+        {
+            foreach (var displayValue in gridstate)
+            {
+                var key = displayValue.Key;
+                int x = key.Item1;
+                int y = key.Item2;
 
-                    ViewModel vm = this.Game.GetViewModel();
+                string naam = GetPixelNaam(x, y);
 
-                    int displayValue = vm.GetDisplayValue(i, j);
-                    pixel.BackColor = this.LayerValueToColorMapping[displayValue];
-                }
+                bool searchAllChildren = false;
+                Control control = this.Gridpanel.Controls.Find(naam, searchAllChildren)[0];
+
+                PictureBox pixel = (PictureBox)control;
+                pixel.BackColor = this.LayerValueToColorMapping[displayValue.Value];
             }
         }
 

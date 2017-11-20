@@ -6,7 +6,7 @@ namespace BlueSeaBattle
     {
         public Tuple<int, string> GetChallenge()
         {
-            return new Tuple<int, string>(5, "+ 1 4");
+            return new System.Tuple<int, string>(5, "+ 1 4");
         }
     }
 }

@@ -6,7 +6,7 @@ namespace BlueSeaBattle
     public class Challenge
     {
         private List<string> operators;
-        private Tuple<int, string> challenge;
+        private System.Tuple<int, string> challenge;
 
         public Challenge()
         {
@@ -66,12 +66,12 @@ namespace BlueSeaBattle
             }
             if (getRandomNumber(1) == 0)
             {
-                this.challenge = new Tuple<int, string>(solution, $"{numberOne} {this.getOperator(usedOperator)} {numberTwo}");
+                this.challenge = new System.Tuple<int, string>(solution, $"{numberOne} {this.getOperator(usedOperator)} {numberTwo}");
                 Console.WriteLine($"Sol:{solution} = {numberOne} {this.getOperator(usedOperator)} {numberTwo}");
             }
             else
             {
-                this.challenge = new Tuple<int, string>(solution, $"{this.getOperator(usedOperator)} {numberOne} {numberTwo}");
+                this.challenge = new System.Tuple<int, string>(solution, $"{this.getOperator(usedOperator)} {numberOne} {numberTwo}");
                 Console.WriteLine($"Sol:{solution} = {this.getOperator(usedOperator)} {numberOne} {numberTwo}");
             }
             return this.challenge;

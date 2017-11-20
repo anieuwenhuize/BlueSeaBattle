@@ -7,28 +7,28 @@ using System.Threading.Tasks;
 
 namespace BlueSeaBattle
 {
-    class CanonAndRadarCombiList : IEnumerable<Tuple<IKanon, IRadar>>
+    class CanonAndRadarCombiList : IEnumerable<System.Tuple<IKanon, IRadar>>
     {
-        private IList<Tuple<IKanon, IRadar>> List;
+        private IList<System.Tuple<IKanon, IRadar>> List;
 
         public CanonAndRadarCombiList(IEnumerable<IKanon> canons, IEnumerable<IRadar> radars)
         {
-            List = new List<Tuple<IKanon, IRadar>>();
+            List = new List<System.Tuple<IKanon, IRadar>>();
 
             foreach(IKanon canon in canons)
             {
-                List.Add(new Tuple<IKanon, IRadar>(canon, null));
+                List.Add(new System.Tuple<IKanon, IRadar>(canon, null));
             }
 
             // Add the radars to the canons
             int i = 0;
             foreach (IRadar radar in radars)
             {
-                List[i] = new Tuple<IKanon, IRadar>(List[i].Item1, radar);
+                List[i] = new System.Tuple<IKanon, IRadar>(List[i].Item1, radar);
             }
         }
 
-        public IEnumerator<Tuple<IKanon, IRadar>> GetEnumerator()
+        public IEnumerator<System.Tuple<IKanon, IRadar>> GetEnumerator()
         {
             return List.GetEnumerator();
         }

@@ -52,7 +52,7 @@ namespace BlueSeaBattle
 
         private bool IsMissileCatched(IGoalkeeper goalkeeper)
         {
-            Tuple<int, string> challenge = Challenge.GetChallenge();
+            System.Tuple<int, string> challenge = Challenge.GetChallenge();
 
             try
             {

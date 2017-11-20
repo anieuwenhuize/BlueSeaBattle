@@ -26,11 +26,11 @@ namespace BlueSeaBattle
                 new Coordinate(23, 3)));
 
             Location.Add(new Location(
-                new Coordinate(0, 8), 
-                new Coordinate(1, 8), 
-                new Coordinate(2, 8), 
-                new Coordinate(3, 8), 
-                new Coordinate(4, 8)));
+                new Coordinate(0, 4), 
+                new Coordinate(1, 4), 
+                new Coordinate(2, 4), 
+                new Coordinate(3, 4), 
+                new Coordinate(4, 4)));
 
             Location.Add(new Location(
                 new Coordinate(13, 7),
