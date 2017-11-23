@@ -34,7 +34,8 @@ namespace BlueSeaBattle
                 // animations
                 { 31, Color.RosyBrown },
                 { 32, Color.Yellow },
-                { 33, Color.OrangeRed }
+                { 33, Color.OrangeRed },
+                { 34, Color.Green }
             };
 
             Pixels = new SortedDictionary<string, PictureBox>();

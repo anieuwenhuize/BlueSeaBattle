@@ -12,6 +12,7 @@ namespace BlueSeaBattle
         public const int Missile = 31;
         public const int MissileTail = 32;
         public const int MissileHit = 33;
+        public const int MissileCatched = 34;
 
         private IList<IAnimation> Animations; 
 

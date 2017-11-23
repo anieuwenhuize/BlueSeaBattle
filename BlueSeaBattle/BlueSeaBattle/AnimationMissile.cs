@@ -13,16 +13,25 @@ namespace BlueSeaBattle
         private ICoordinate Tail;
         private ICoordinate Missile;
 
-        public AnimationMissile(ICoordinate from, ICoordinate to)
+        private MissileEffect Effect;
+
+        private bool ShowFinalFrame;
+        private bool FinalFrameShowed;
+
+        public AnimationMissile(ICoordinate from, ICoordinate to, MissileEffect effect)
         {
             From = from;
             To = to;
+            Effect = effect;
 
             Missile = From;
             Tail = Missile;
+
+            ShowFinalFrame = false;
+            FinalFrameShowed = false;
         }
 
-        private int GetFinalFrameDisplayValue(int x, int y)
+        private int ShowSphere(int x, int y, int effect)
         {
             int minX = To.GetX() - 1;
             int maxX = To.GetX() + 1;
@@ -30,7 +39,28 @@ namespace BlueSeaBattle
             int minY = To.GetY() - 1;
             int maxY = To.GetY() + 1;
 
-            if(x >= minX && x <= maxX && y >= minY && y <= maxY)
+            if (x >= minX && x <= maxX && y >= minY && y <= maxY)
+            {
+                return effect;
+            }
+
+            return 0;
+         }
+
+        private int GetFinalFrameDisplayValue(int x, int y)
+        {
+           
+            if(Effect == MissileEffect.HitAndCatched)
+            {
+                ShowSphere(x, y, AnimationLayer.MissileCatched);
+            }
+
+            if(Effect == MissileEffect.HitAndDamage)
+            {
+                ShowSphere(x, y, AnimationLayer.MissileHit);
+            }
+
+            if (Effect == MissileEffect.HitAndDamage)
             {
                 return AnimationLayer.MissileHit;
             }
@@ -57,7 +87,7 @@ namespace BlueSeaBattle
 
         public bool IsDone()
         {
-            return Coordinate.AreSame(this.Missile, this.To);
+            return Coordinate.AreSame(this.Missile, this.To) && FinalFrameShowed;
         }
 
         public int GetDisplayValue(int x, int y)
@@ -72,7 +102,7 @@ namespace BlueSeaBattle
                 return AnimationLayer.MissileTail;
             }
 
-            if (Coordinate.AreSame(this.Missile, this.To))
+            if (Coordinate.AreSame(this.Missile, this.To) && this.ShowFinalFrame)
             {
                 return GetFinalFrameDisplayValue(x, y);
             }
@@ -85,6 +115,18 @@ namespace BlueSeaBattle
             this.Tail = this.Missile;
 
             this.Missile = GetNewMissilePosition();
+
+            if (Coordinate.AreSame(this.Missile, this.To))
+            {
+                if (! ShowFinalFrame)
+                {
+                    ShowFinalFrame = true;
+                }
+                else
+                {
+                    this.FinalFrameShowed = true;
+                }   
+            }
         }
     }
 }

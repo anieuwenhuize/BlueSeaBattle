@@ -119,7 +119,7 @@ namespace BlueSeaBattle
         private void ShowAnimations(IEnumerable<Missile> missiles)
         {
             IEnumerable<IAnimation> animations = missiles
-                .Select(x => new AnimationMissile(x.GetOwner(), x.GetTarget()));
+                .Select(x => new AnimationMissile(x.GetOwner(), x.GetTarget(), x.GetEffect()));
 
             ViewModel.Play(animations);
         }
