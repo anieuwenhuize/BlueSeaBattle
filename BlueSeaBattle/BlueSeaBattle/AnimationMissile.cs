@@ -22,10 +22,20 @@ namespace BlueSeaBattle
             Tail = Missile;
         }
 
-        private IEnumerable<ICoordinate> GetFinalFrame()
+        private int GetFinalFrameDisplayValue(int x, int y)
         {
-            // TODO: surround with blocks
-            return new List<ICoordinate>() { To };
+            int minX = To.GetX() - 1;
+            int maxX = To.GetX() + 1;
+
+            int minY = To.GetY() - 1;
+            int maxY = To.GetY() + 1;
+
+            if(x >= minX && x <= maxX && y >= minY && y <= maxY)
+            {
+                return AnimationLayer.MissileHit;
+            }
+
+            return 0;
         }
 
         private ICoordinate GetNewMissilePosition()
@@ -60,6 +70,11 @@ namespace BlueSeaBattle
             if (this.Tail.GetX() == x && this.Tail.GetY() == y)
             {
                 return AnimationLayer.MissileTail;
+            }
+
+            if (Coordinate.AreSame(this.Missile, this.To))
+            {
+                return GetFinalFrameDisplayValue(x, y);
             }
 
             return 0;

@@ -22,7 +22,8 @@ namespace BlueSeaBattle
             {
                 // background
                 { 1, Color.Beige },
-                { 2, Color.Orange },
+                { 2, Color.AliceBlue },
+                { 3, Color.Orange },
 
                 // seabottom
                 { 11, Color.Gray },
