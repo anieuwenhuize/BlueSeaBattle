@@ -108,16 +108,27 @@ namespace BlueSeaBattle
             var incommin = new IncommingMissiles(TheSea, missiles);
             incommin.Launch();
 
+            // show animations
+            ShowAnimations(missiles);
+
             // Move  
             var sail = new SailAway(CurrentShip, TheSea);
             sail.Navigate();
+        }
+
+        private void ShowAnimations(IEnumerable<Missile> missiles)
+        {
+            IEnumerable<IAnimation> animations = missiles
+                .Select(x => new AnimationMissile(x.GetOwner(), x.GetTarget()));
+
+            ViewModel.Play(animations);
         }
 
         private IEnumerable<Missile> Shoot(CanonAndRadarCombiList weaponcombi, BattleShip battleship)
         {
             ICollection<Missile> missiles = new List<Missile>();
 
-            foreach (System.Tuple<IKanon, IRadar> weapons in weaponcombi)
+            foreach (Tuple<IKanon, IRadar> weapons in weaponcombi)
             {
                 ICoordinate coordinate = TakeShot(weapons);
                 Missile missile = new Missile(coordinate, battleship);
@@ -128,7 +139,7 @@ namespace BlueSeaBattle
             return missiles;
         }
 
-        private ICoordinate TakeShot(System.Tuple<IKanon, IRadar> weaponcombi)
+        private ICoordinate TakeShot(Tuple<IKanon, IRadar> weaponcombi)
         {
             IRadar radar = weaponcombi.Item2;
             IKanon canon = weaponcombi.Item1;

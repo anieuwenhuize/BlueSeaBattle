@@ -34,6 +34,21 @@ namespace BlueSeaBattle
             this.Animations.Add(animation);
         }
 
+        public void PlayNewFrame()
+        {
+            foreach(IAnimation animation in this.Animations)
+            {
+                animation.CalculateNewFrame();
+            }
+        }
+
+        public bool HasAnimations()
+        {
+            Recalculate();
+
+            return this.Animations.Any();
+        }
+
         public void Recalculate()
         {
             // Animaties opschonen
