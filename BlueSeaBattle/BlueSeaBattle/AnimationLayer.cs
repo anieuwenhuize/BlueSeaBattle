@@ -22,7 +22,11 @@ namespace BlueSeaBattle
 
         public int GetDisplayValue(int x, int y)
         {
-            return 0;
+            IEnumerable<int> values = this.Animations
+                .Select(a => a.GetDisplayValue(x, y))
+                .Concat(new List<int> { 0 });
+
+            return values.Max();
         }
 
         public void Add(IAnimation animation)

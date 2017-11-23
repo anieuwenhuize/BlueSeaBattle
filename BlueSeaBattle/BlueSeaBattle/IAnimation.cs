@@ -4,7 +4,9 @@ namespace BlueSeaBattle
 {
     public interface IAnimation
     {
-        IEnumerable<ICoordinate> GetNextFrame();
+        int GetDisplayValue(int x, int y);
+
+        void CalculateNewFrame();
 
         bool IsDone();
     }

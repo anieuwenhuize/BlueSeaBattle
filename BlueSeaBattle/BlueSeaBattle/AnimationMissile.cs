@@ -28,35 +28,39 @@ namespace BlueSeaBattle
             return new List<ICoordinate>() { To };
         }
 
-        private void SetNewMissilePosition()
+        private ICoordinate GetNewMissilePosition()
         {
             int newX = (Missile.GetX() > To.GetX()) ? Missile.GetX() - 1 : Missile.GetX() + 1;
             int newY = (Missile.GetY() > To.GetY()) ? Missile.GetY() - 1 : Missile.GetY() + 1;
 
-            this.Missile = new Coordinate(newX, newY);
-        }
-
-        public IEnumerable<ICoordinate> GetNextFrame()
-        {
-            if (IsDone())
-            {
-                return GetFinalFrame();
-            }
-            else
-            {
-                ICoordinate tail = this.Missile;
-
-                SetNewMissilePosition();
-
-                ICoordinate missile = this.Missile;
-
-                return new List<ICoordinate>() { tail, missile };
-            }
+            return new Coordinate(newX, newY);
         }
 
         public bool IsDone()
         {
             return Coordinate.AreSame(this.Missile, this.To);
+        }
+
+        public int GetDisplayValue(int x, int y)
+        {
+            if(this.Missile.GetX() == x && this.Missile.GetY() == y)
+            {
+                return AnimationLayer.Missile;
+            }
+
+            if (this.Tail.GetX() == x && this.Tail.GetY() == y)
+            {
+                return AnimationLayer.MissileTail;
+            }
+
+            return 0;
+        }
+
+        public void CalculateNewFrame()
+        {
+            this.Tail = this.Missile;
+
+            this.Missile = GetNewMissilePosition();
         }
     }
 }
