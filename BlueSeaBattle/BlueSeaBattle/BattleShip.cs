@@ -25,7 +25,7 @@ namespace BlueSeaBattle
         }
 
         protected int GetMaxX()
-        {
+         {
             return Sea.GridWidth;
         }
 

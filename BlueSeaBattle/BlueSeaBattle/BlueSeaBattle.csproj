@@ -91,6 +91,10 @@
     <Compile Include="TestShip.cs" />
     <Compile Include="Turn.cs" />
     <Compile Include="ViewModel.cs" />
+    <Compile Include="ZZMikerib.cs" />
+    <Compile Include="ZZZDaanVSplunter.cs" />
+    <Compile Include="ZZZGiorgio.cs" />
+    <Compile Include="ZZZMilad.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

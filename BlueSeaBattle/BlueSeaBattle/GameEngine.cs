@@ -134,11 +134,35 @@ namespace BlueSeaBattle
             TheSea.AcceptShip(albatros);
         }
 
+        public void AddTestCaptain(Location location, IFitInSocket captain, string captainnaam)
+        {
+            IFitInSocket canon = new TestCanon(new List<ICoordinate>() {
+                new Coordinate(1, 1) });
+
+            BattleShip albatros = new TestShip(captainnaam, location, captain, canon);
+
+            TheSea.AcceptShip(albatros);
+        }
+
         public void PlaceShips()
         {
             var plan = new Plan();
+            //plan.GetNexLocation();
+            //plan.GetNexLocation();
 
-            AddAlbatros(plan.GetNexLocation());
+            //AddAlbatros(plan.GetNexLocation());
+
+
+            //AddTestCaptain(plan.GetNexLocation(), new KapiteinKoek(), "KapiteinKoek");
+
+            //AddTestCaptain(plan.GetNexLocation(), new Kapitein(), "Daan");
+
+            //AddTestCaptain(plan.GetNexLocation(), new KapiteinMilad(), "Milad");
+
+            //AddTestCaptain(plan.GetNexLocation(), new KapiteinGiorgio(), "Giorgio");
+
+
+
             AddSallySinke(plan.GetNexLocation());
             AddDeEendracht(plan.GetNexLocation());
             AddDeVliegendeHollander(plan.GetNexLocation());

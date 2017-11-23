@@ -7,11 +7,12 @@ namespace BlueSeaBattle
 {
     public partial class Form1 : Form, IUpdateable
     {
-        private const int PixelWidth = 25;
+        private const int PixelWidth = 10;
 
         private GameEngine Game;
 
         private IDictionary<int, Color> LayerValueToColorMapping;
+        private IDictionary<string, PictureBox> Pixels;
 
         private ConcreteLayer LastGridState;
         
@@ -29,6 +30,8 @@ namespace BlueSeaBattle
                 // seasurface
                 { 21, Color.Black },
             };
+
+            Pixels = new SortedDictionary<string, PictureBox>();
 
             InitializeComponent();
 
@@ -72,6 +75,7 @@ namespace BlueSeaBattle
                     PictureBox pixel = this.CreatePixel(x, y, naam);
                     
                     this.Gridpanel.Controls.Add(pixel);
+                    this.Pixels.Add(naam, pixel);
                 }
             }
         }
@@ -107,10 +111,7 @@ namespace BlueSeaBattle
 
                 string naam = GetPixelNaam(x, y);
 
-                bool searchAllChildren = false;
-                Control control = this.Gridpanel.Controls.Find(naam, searchAllChildren)[0];
-
-                PictureBox pixel = (PictureBox)control;
+                PictureBox pixel = this.Pixels[naam];
                 pixel.BackColor = this.LayerValueToColorMapping[displayValue.Value];
             }
         }
