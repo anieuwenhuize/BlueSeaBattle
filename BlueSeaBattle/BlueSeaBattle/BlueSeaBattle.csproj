@@ -80,6 +80,7 @@
     <Compile Include="Location.cs" />
     <Compile Include="Missile.cs" />
     <Compile Include="AnimationLayer.cs" />
+    <Compile Include="MissileEffect.cs" />
     <Compile Include="NoTurn.cs" />
     <Compile Include="Plan.cs" />
     <Compile Include="Program.cs" />
