@@ -147,12 +147,19 @@ namespace BlueSeaBattle
         public void PlaceShips()
         {
             var plan = new Plan();
-            //plan.GetNexLocation();
-            //plan.GetNexLocation();
+          
+            AddAlbatros(plan.GetNexLocation());
 
-            //AddAlbatros(plan.GetNexLocation());
+            AddSallySinke(plan.GetNexLocation());
 
+            AddDeEendracht(plan.GetNexLocation());
 
+            AddDeVliegendeHollander(plan.GetNexLocation());
+
+            
+
+            
+            
             //AddTestCaptain(plan.GetNexLocation(), new KapiteinKoek(), "KapiteinKoek");
 
             //AddTestCaptain(plan.GetNexLocation(), new Kapitein(), "Daan");
@@ -160,12 +167,6 @@ namespace BlueSeaBattle
             //AddTestCaptain(plan.GetNexLocation(), new KapiteinMilad(), "Milad");
 
             //AddTestCaptain(plan.GetNexLocation(), new KapiteinGiorgio(), "Giorgio");
-
-
-
-            AddSallySinke(plan.GetNexLocation());
-            AddDeEendracht(plan.GetNexLocation());
-            AddDeVliegendeHollander(plan.GetNexLocation());
         }
     }
 }
