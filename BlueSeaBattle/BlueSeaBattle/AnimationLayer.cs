@@ -52,7 +52,11 @@ namespace BlueSeaBattle
         public void Recalculate()
         {
             // Animaties opschonen
-            IEnumerable<IAnimation> ToRemove = this.Animations.Where(x => x.IsDone());
+            IEnumerable<IAnimation> ToRemove = this.Animations
+                .Where(x => x.IsDone())
+
+                // Force execution
+                .ToList();
 
             foreach(IAnimation remove in ToRemove)
             {

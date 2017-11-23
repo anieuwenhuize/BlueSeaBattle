@@ -30,10 +30,19 @@ namespace BlueSeaBattle
 
         private ICoordinate GetNewMissilePosition()
         {
-            int newX = (Missile.GetX() > To.GetX()) ? Missile.GetX() - 1 : Missile.GetX() + 1;
-            int newY = (Missile.GetY() > To.GetY()) ? Missile.GetY() - 1 : Missile.GetY() + 1;
+            int newX = GetNewPosition(Missile.GetX(), To.GetX());
+            int newY = GetNewPosition(Missile.GetY(), To.GetY());
 
             return new Coordinate(newX, newY);
+        }
+
+        private int GetNewPosition(int current, int to)
+        {
+            if (current == to) return to;
+
+            if (current < to) return current + 1;
+
+            return current - 1;
         }
 
         public bool IsDone()
