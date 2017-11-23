@@ -156,10 +156,7 @@ namespace BlueSeaBattle
 
             AddDeVliegendeHollander(plan.GetNexLocation());
 
-            
 
-            
-            
             //AddTestCaptain(plan.GetNexLocation(), new KapiteinKoek(), "KapiteinKoek");
 
             //AddTestCaptain(plan.GetNexLocation(), new Kapitein(), "Daan");

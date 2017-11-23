@@ -14,6 +14,7 @@ namespace BlueSeaBattle
         private ILayer BackgroundLayer;
         private ILayer SeaBottomLayer; 
         private ILayer SeaSurfaceLayer;
+        private ILayer MissileLayer;
 
         public ViewModel(Sea Sea, IUpdateable form)
         {
@@ -24,15 +25,17 @@ namespace BlueSeaBattle
             BackgroundLayer = new BackgroundLayer();
             SeaBottomLayer = new SeaBottomLayer(this.TheSea);
             SeaSurfaceLayer = new SeaSurfaceLayer(this.TheSea);
+            MissileLayer = new MissileLayer();
         }
 
         public int GetDisplayValue(int x, int y)
         {
             int backgroundValue = this.BackgroundLayer.GetDisplayValue(x, y);
-            int SeaBottomValue = this.SeaBottomLayer.GetDisplayValue(x, y);
-            int SeaSurfaceLayer = this.SeaSurfaceLayer.GetDisplayValue(x, y);
+            int seaBottomValue = this.SeaBottomLayer.GetDisplayValue(x, y);
+            int seaSurfaceValue = this.SeaSurfaceLayer.GetDisplayValue(x, y);
+            int missileValue = this.MissileLayer.GetDisplayValue(x, y);
 
-            int valueToReturn = new List<int>() { backgroundValue, SeaBottomValue, SeaSurfaceLayer }
+            int valueToReturn = new List<int>() { backgroundValue, seaBottomValue, seaSurfaceValue, missileValue }
                 .Max();
 
             return valueToReturn;
@@ -43,6 +46,7 @@ namespace BlueSeaBattle
             BackgroundLayer.Recalculate();
             SeaBottomLayer.Recalculate();
             SeaSurfaceLayer.Recalculate();
+            MissileLayer.Recalculate();
 
             Form.DoUpdate();
         }
