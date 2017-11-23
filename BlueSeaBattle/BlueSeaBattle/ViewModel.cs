@@ -25,7 +25,7 @@ namespace BlueSeaBattle
             BackgroundLayer = new BackgroundLayer();
             SeaBottomLayer = new SeaBottomLayer(this.TheSea);
             SeaSurfaceLayer = new SeaSurfaceLayer(this.TheSea);
-            MissileLayer = new MissileLayer();
+            MissileLayer = new AnimationLayer();
         }
 
         public int GetDisplayValue(int x, int y)

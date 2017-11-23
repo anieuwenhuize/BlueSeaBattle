@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimationMissile.cs" />
     <Compile Include="BackgroundLayer.cs" />
     <Compile Include="BattleShip.cs" />
     <Compile Include="BattleshipAssestProvider.cs" />
@@ -65,6 +66,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GameEngine.cs" />
+    <Compile Include="IAnimation.cs" />
     <Compile Include="ICoordinate.cs" />
     <Compile Include="IFitInSocket.cs" />
     <Compile Include="IGoalkeeper.cs" />
@@ -77,7 +79,7 @@
     <Compile Include="Layer.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Missile.cs" />
-    <Compile Include="MissileLayer.cs" />
+    <Compile Include="AnimationLayer.cs" />
     <Compile Include="NoTurn.cs" />
     <Compile Include="Plan.cs" />
     <Compile Include="Program.cs" />
