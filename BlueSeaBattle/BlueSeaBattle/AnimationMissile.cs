@@ -47,22 +47,32 @@ namespace BlueSeaBattle
             return 0;
          }
 
+        private int ShowPoint(int x, int y, int effect)
+        {
+            if (x == To.GetX() && y == To.GetY())
+            {
+                return effect;
+            }
+
+            return 0;
+        }
+
         private int GetFinalFrameDisplayValue(int x, int y)
         {
            
             if(Effect == MissileEffect.HitAndCatched)
             {
-                ShowSphere(x, y, AnimationLayer.MissileCatched);
+                return ShowSphere(x, y, AnimationLayer.MissileCatched);
             }
 
             if(Effect == MissileEffect.HitAndDamage)
             {
-                ShowSphere(x, y, AnimationLayer.MissileHit);
+                return ShowSphere(x, y, AnimationLayer.MissileHit);
             }
 
-            if (Effect == MissileEffect.HitAndDamage)
+            if (Effect == MissileEffect.HitNoDamage)
             {
-                return AnimationLayer.MissileHit;
+                return ShowPoint(x, y, AnimationLayer.MissileHit);
             }
 
             return 0;

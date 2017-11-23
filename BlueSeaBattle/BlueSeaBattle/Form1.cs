@@ -7,7 +7,7 @@ namespace BlueSeaBattle
 {
     public partial class Form1 : Form, IUpdateable
     {
-        private const int PixelWidth = 10;
+        private const int PixelWidth = 25;
 
         private GameEngine Game;
 

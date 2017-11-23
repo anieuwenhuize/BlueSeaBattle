@@ -44,10 +44,12 @@ namespace BlueSeaBattle
 
             if (hasGoalkeeper && IsMissileCatched(goalkeeper))
             {
+                missile.SetEffect(MissileEffect.HitAndCatched);
                 return;
             }
 
-            targetShip.AcceptMissile(missile);
+            MissileEffect effect = targetShip.AcceptMissile(missile);
+            missile.SetEffect(effect);
         }
 
         private bool IsMissileCatched(IGoalkeeper goalkeeper)

@@ -109,12 +109,16 @@ namespace BlueSeaBattle
             }
         }
 
-        public void AcceptMissile(Missile missile)
+        public MissileEffect AcceptMissile(Missile missile)
         {
             if (this.IsHit(missile))
             {
                 AcceptDamageOn(missile.GetTarget());
+
+                return MissileEffect.HitAndDamage;
             }
+
+            return MissileEffect.HitNoDamage;
         }
     }
 }
